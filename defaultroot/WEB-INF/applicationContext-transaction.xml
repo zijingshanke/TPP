@@ -1,0 +1,488 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-lazy-init="false" default-autowire="no"
+	default-dependency-check="none"> 
+	<bean name="/transaction/transactionlist"
+		class="com.fordays.fdpay.transaction.action.TransactionListAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="transactionBiz">
+			<ref bean="transactionBiz" />
+		</property>
+		<property name="actionLogBiz">
+			<ref bean="actionLogBiz" />
+		</property>
+		<property name="agentBiz">
+			<ref bean="agentBiz" />
+		</property>
+	</bean>
+	<bean name="/transaction/charge"
+		class="com.fordays.fdpay.transaction.action.ChargeAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="noUtil">
+			<ref bean="noUtil" />
+		</property>
+		<property name="agentBiz">
+			<ref bean="agentBiz" />
+		</property>
+		<property name="chargeBiz">
+			<ref bean="chargeBiz" />
+		</property>
+		<property name="chargeLogBiz">
+			<ref bean="chargeLogBiz" />
+		</property>
+		<property name="userBiz">
+			<ref bean="userBiz" />
+		</property>
+		<property name="agentCoterieBiz">
+			<ref bean="agentCorerieBiz" />
+		</property>
+	</bean>
+
+	<bean name="/transaction/transactionStatistic"
+		class="com.fordays.fdpay.transaction.action.StatisticAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="chargeBiz">
+			<ref bean="chargeBiz" />
+		</property>
+		<property name="userBiz">
+			<ref bean="userBiz" />
+		</property>
+		<property name="drawBiz">
+			<ref bean="drawBiz" />
+		</property>
+		<property name="agentBiz">
+			<ref bean="agentBiz" />
+		</property>
+	</bean>
+
+	<bean name="/transaction/chargelist"
+		class="com.fordays.fdpay.transaction.action.ChargeListAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="agentBiz">
+			<ref bean="agentBiz" />
+		</property>
+		<property name="chargeBiz">
+			<ref bean="chargeBiz" />
+		</property>
+	</bean>
+	<bean name="/transaction/drawlist"
+		class="com.fordays.fdpay.transaction.action.DrawListAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		
+		<property name="agentBiz">
+			<ref bean="agentBiz" />
+		</property>
+		<property name="drawBiz">
+			<ref bean="drawBiz" />
+		</property>
+		<property name="drawLogBiz">
+			<ref bean="drawLogBiz" />
+		</property>
+		<property name="noUtil">
+			<ref bean="noUtil" />
+		</property>
+		<property name="transactionBiz">
+			<ref bean="transactionBiz" />
+		</property>
+	</bean>
+	<bean name="/transaction/draw"
+		class="com.fordays.fdpay.transaction.action.DrawAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="userBiz">
+			<ref bean="userBiz" />
+		</property>
+		<property name="agentBiz">
+			<ref bean="agentBiz" />
+		</property>
+		<property name="drawBiz">
+			<ref bean="drawBiz" />
+		</property>
+		<property name="drawLogBiz">
+			<ref bean="drawLogBiz" />
+		</property>
+		<property name="noUtil">
+			<ref bean="noUtil" />
+		</property>
+
+
+	</bean>
+	<bean name="/transaction/drawLoglist"
+		class="com.fordays.fdpay.transaction.action.DrawLogListAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="userBiz">
+			<ref bean="userBiz" />
+		</property>
+		<property name="agentBiz">
+			<ref bean="agentBiz" />
+		</property>
+		<property name="drawLogBiz">
+			<ref bean="drawLogBiz" />
+		</property>
+		<property name="drawBiz">
+			<ref bean="drawBiz" />
+		</property>
+	</bean>
+	<bean name="/transaction/chargeLoglist"
+		class="com.fordays.fdpay.transaction.action.ChargeLogListAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="agentBiz">
+			<ref bean="agentBiz" />
+		</property>
+		<property name="chargeLogBiz">
+			<ref bean="chargeLogBiz" />
+		</property>
+		<property name="chargeBiz">
+			<ref bean="chargeBiz" />
+		</property>
+	</bean>
+	<bean name="/transaction/transaction"
+		class="com.fordays.fdpay.transaction.action.TransactionAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="transactionBiz">
+			<ref bean="transactionBiz" />
+		</property>
+		<property name="agentBiz">
+			<ref bean="agentBiz" />
+		</property>
+	</bean>
+	<!-- 预支 -->
+	<bean name="/transaction/debit"
+		class="com.fordays.fdpay.transaction.action.DebitAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="debitBiz">
+			<ref bean="debitBiz" />
+		</property>
+		<property name="userBiz">
+			<ref bean="userBiz" />
+		</property>
+		<property name="agentBiz">
+			<ref bean="agentBiz" />
+		</property>
+		<property name="debitLogBiz">
+			<ref bean="debitLogBiz" />
+		</property>
+	</bean>
+	<bean name="/transaction/debitlist"
+		class="com.fordays.fdpay.transaction.action.DebitListAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="debitBiz">
+			<ref bean="debitBiz" />
+		</property>
+	</bean>
+	<bean name="/transaction/debitLog"
+		class="com.fordays.fdpay.transaction.action.DebitListAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="debitLogBiz">
+			<ref bean="debitLogBiz" />
+		</property>
+		
+	</bean>
+	<bean name="/transaction/debitLoglist"
+		class="com.fordays.fdpay.transaction.action.DebitLogListAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="debitLogBiz">
+			<ref bean="debitLogBiz" />
+		</property>
+		<property name="debitBiz">
+			<ref bean="debitBiz" />
+		</property>
+	</bean>
+	<bean id="debitBiz"
+		class="com.fordays.fdpay.transaction.biz.DebitBizImp">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="debitDAO">
+			<ref bean="debitDAO" />
+		</property>
+		<property name="noUtil">
+			<ref bean="noUtil" />
+		</property>
+		<property name="agentDAO">
+			<ref bean="agentDAO" />
+		</property>
+		<property name="orderDetailsDAO">
+			<ref bean="orderDetailsDAO" />
+		</property>
+		<property name="transactionDAO">
+			<ref bean="transactionDAO" />
+		</property>
+	</bean>
+	<bean id="debitLogBiz"
+		class="com.fordays.fdpay.transaction.biz.DebitLogBizImp">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="debitLogDAO">
+			<ref bean="debitLogDAO" />
+		</property>
+		<property name="debitDAO">
+			<ref bean="debitDAO" />
+		</property>
+	</bean>
+
+<!-- 预支 -->
+	<!-- 报销 -->
+	<bean name="/transaction/expense"
+		class="com.fordays.fdpay.transaction.action.ExpenseAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="expenseBiz">
+			<ref bean="expenseBiz" />
+		</property>
+		<property name="userBiz">
+			<ref bean="userBiz" />
+		</property>
+		<property name="agentBiz">
+			<ref bean="agentBiz" />
+		</property>
+		<property name="orderDetailsBiz">
+			<ref bean="orderDetailsBiz" />
+		</property>
+		<property name="expenseLogBiz">
+			<ref bean="expenseLogBiz" />
+		</property>
+		
+	</bean>
+	<bean name="/transaction/expenselist"
+		class="com.fordays.fdpay.transaction.action.ExpenseListAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="expenseBiz">
+			<ref bean="expenseBiz" />
+		</property>
+	</bean>
+	<bean name="/transaction/expenseLog"
+		class="com.fordays.fdpay.transaction.action.ExpenseListAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="expenseLogBiz">
+			<ref bean="expenseLogBiz" />
+		</property>
+	</bean>
+	<bean name="/transaction/expenseLoglist"
+		class="com.fordays.fdpay.transaction.action.ExpenseLogListAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="expenseLogBiz">
+			<ref bean="expenseLogBiz" />
+		</property>
+		<property name="expenseBiz">
+			<ref bean="expenseBiz" />
+		</property>
+	</bean>
+	<bean id="expenseBiz"
+		class="com.fordays.fdpay.transaction.biz.ExpenseBizImp">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="expenseDAO">
+			<ref bean="expenseDAO" />
+		</property>
+		<property name="noUtil">
+			<ref bean="noUtil" />
+		</property>
+		<property name="agentDAO">
+			<ref bean="agentDAO" />
+		</property>
+		<property name="orderDetailsDAO">
+			<ref bean="orderDetailsDAO" />
+		</property>
+		<property name="transactionDAO">
+			<ref bean="transactionDAO" />
+		</property>
+		
+	</bean>
+	<bean id="expenseLogBiz"
+		class="com.fordays.fdpay.transaction.biz.ExpenseLogBizImp">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="expenseLogDAO">
+			<ref bean="expenseLogDAO" />
+		</property>
+		<property name="expenseDAO">
+			<ref bean="expenseDAO" />
+		</property>
+	</bean>
+
+<!-- 报销-->
+
+
+	<bean id="transactionBiz"
+		class="com.fordays.fdpay.transaction.biz.TransactionBizImp">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionDAO">
+			<ref bean="transactionDAO" />
+		</property>
+		<property name="agentDAO">
+			<ref bean="agentDAO" />
+		</property>
+	</bean>
+	<bean id="actionLogBiz"
+		class="com.fordays.fdpay.cooperate.biz.ActionLogBizImpl">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="actionLogDAO">
+			<ref bean="actionLogDAO" />
+		</property>
+	</bean>
+
+	<bean id="debitDAO"
+		class="com.fordays.fdpay.transaction.dao.DebitDAOImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="debitLogDAO"
+		class="com.fordays.fdpay.transaction.dao.DebitLogDAOImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="expenseDAO"
+		class="com.fordays.fdpay.transaction.dao.ExpenseDAOImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="expenseLogDAO"
+		class="com.fordays.fdpay.transaction.dao.ExpenseLogDAOImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="transactionDAO"
+		class="com.fordays.fdpay.transaction.dao.TransactionDAOImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="actionLogDAO"
+		class="com.fordays.fdpay.cooperate.dao.ActionLogDAOImpl"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="chargeBiz"
+		class="com.fordays.fdpay.transaction.biz.ChargeBizImp">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="chargeDAO">
+			<ref bean="chargeDAO" />
+		</property>
+		<property name="orderDetailsDAO">
+			<ref bean="orderDetailsDAO" />
+		</property>
+		<property name="transactionDAO">
+			<ref bean="transactionDAO" />
+		</property>
+		<property name="noUtil">
+			<ref bean="noUtil" />
+		</property>
+		<property name="agentDAO">
+			<ref bean="agentDAO" />
+		</property>
+	</bean>
+
+	<bean id="chargeDAO"
+		class="com.fordays.fdpay.transaction.dao.ChargeDAOImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="chargeLogBiz"
+		class="com.fordays.fdpay.transaction.biz.ChargeLogBizImp">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="chargeLogDAO">
+			<ref bean="chargeLogDAO" />
+		</property>
+	</bean>
+
+	<bean id="chargeLogDAO"
+		class="com.fordays.fdpay.transaction.dao.ChargeLogDAOImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="drawBiz"
+		class="com.fordays.fdpay.transaction.biz.DrawBizImp">
+		<property name="drawDAO">
+			<ref bean="drawDAO" />
+		</property>
+		<property name="accountDAO">
+			<ref bean="accountDAO" />
+		</property>
+		<property name="agentDAO">
+			<ref bean="agentDAO" />
+		</property>
+		<property name="userDAO">
+			<ref bean="userDAO" />
+		</property>
+		<property name="sysLogDAO">
+			<ref bean="sysLogDAO" />
+		</property>
+		<property name="tasktimestampDAO">
+			<ref bean="tasktimestampDAO" />
+		</property>
+		<property name="noUtil">
+			<ref bean="noUtil" />
+		</property>
+		<property name="transactionDAO">
+			<ref bean="transactionDAO" />
+		</property>
+	</bean>
+
+	<bean id="drawLogDAO"
+		class="com.fordays.fdpay.transaction.dao.DrawLogDAOImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="drawLogBiz"
+		class="com.fordays.fdpay.transaction.biz.DrawLogBizImp">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="drawLogDAO">
+			<ref bean="drawLogDAO" />
+		</property>
+	</bean>
+	<bean id="drawDAO"
+		class="com.fordays.fdpay.transaction.dao.DrawDAOImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="orderDetailsBiz"
+		class="com.fordays.fdpay.transaction.biz.OrderDetailsBizImp">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="orderDetailsDAO">
+			<ref bean="orderDetailsDAO" />
+		</property>
+	</bean>
+	<bean id="orderDetailsDAO"
+		class="com.fordays.fdpay.transaction.dao.OrderDetailsDAOImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+</beans>
+
+
+

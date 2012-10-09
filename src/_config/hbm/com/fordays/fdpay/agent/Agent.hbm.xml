@@ -1,0 +1,712 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- [syncWithModel=true] -->
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	
+<hibernate-mapping >
+
+<class 
+  name="com.fordays.fdpay.agent.Agent"
+	table="agent"
+>
+
+<meta attribute="extends">org.apache.struts.action.ActionForm implements Cloneable</meta>
+<meta attribute="class-code"><![CDATA[
+  public Object clone()
+  {
+    Object o = null;
+    try
+    {
+      o = super.clone();
+    }
+    catch (CloneNotSupportedException e)
+    {
+      e.printStackTrace();
+    }
+    return o;
+}
+
+private String thisAction="";
+ public String getThisAction()
+ {
+     return thisAction;
+ }
+
+
+public void setThisAction(String thisAction)
+ {
+     this.thisAction=thisAction;
+ }
+
+private int index=0;
+ public int getIndex()
+ {
+     return index;
+ }
+
+
+public void setIndex(int index)
+ {
+     this.index=index;
+ }
+ 
+
+
+
+
+]]></meta>
+
+
+    <id
+        name="id"
+        type="long"
+        column="id"
+    >
+        <generator class="sequence" >
+          <param  name="sequence">seq_agent</param>
+          </generator>
+    </id>
+
+    <property
+        name="name"
+        column="name"
+        type="string"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="mobile"
+        column="mobile"
+        type="string"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="registerType"
+        column="register_type"
+        type="java.lang.Long"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="address"
+        column="address"
+        type="string"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="loginName"
+        column="login_name"
+        type="string"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="password"
+        column="password"
+        type="string"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="payPassword"
+        column="pay_password"
+        type="string"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="photo"
+        column="photo"
+        type="string"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="status"
+        column="status"
+        type="java.lang.Long"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="email"
+        column="email"
+        type="string"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="tempEmail"
+        column="temp_email"
+        type="string"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="question2"
+        column="question2"
+        type="string"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="answer2"
+        column="answer2"
+        type="string"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="question1"
+        column="question1"
+        type="string"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="answer1"
+        column="answer1"
+        type="string"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="question"
+        column="question"
+        type="string"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="answer"
+        column="answer"
+        type="string"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="loginNum"
+        column="login_num"
+        type="java.lang.Long"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="certification"
+        column="certification"
+        type="string"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="telephone"
+        column="telephone"
+        type="string"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="certType"
+        column="cert_type"
+        type="java.lang.Long"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="certNum"
+        column="cert_num"
+        type="string"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="score"
+        column="score"
+        type="java.lang.Long"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="levelId"
+        column="level_id"
+        type="java.lang.Long"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="updateDate"
+        column="update_date"
+        type="java.sql.Timestamp"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="registerDate"
+        column="register_date"
+        type="java.sql.Timestamp"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="lastLoginDate"
+        column="last_login_date"
+        type="java.sql.Timestamp"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="loginIp"
+        column="login_IP"
+        type="string"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="accountType"
+        column="account_type"
+        type="java.lang.Long"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="accountStatus"
+        column="account_status"
+        type="java.lang.Long"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="allowBalance"
+        column="allow_balance"
+        type="java.math.BigDecimal"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="notallowBalance"
+        column="notallow_balance"
+        type="java.math.BigDecimal"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="creditBalance"
+        column="credit_balance"
+        type="java.math.BigDecimal"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="consumeBalance"
+        column="consume_balance"
+        type="java.math.BigDecimal"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="checkAmount"
+        column="check_amount"
+        type="java.math.BigDecimal"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="certStatus"
+        column="cert_status"
+        type="java.lang.Long"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="mobileBindStatus"
+        column="mobile_bind_status"
+        type="java.lang.Long"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="mobilePasswordStatus"
+        column="mobile_password_status"
+        type="java.lang.Long"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="mobileQuestionStatus"
+        column="mobile_question_status"
+        type="java.lang.Long"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="mobileLoginStatus"
+        column="mobile_login_status"
+        type="java.lang.Long"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="mobilePayStatus"
+        column="mobile_pay_status"
+        type="java.lang.Long"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="maxItermAmount"
+        column="max_iterm_amount"
+        type="java.math.BigDecimal"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="maxDrawAmount"
+        column="max_draw_amount"
+        type="java.math.BigDecimal"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="maxItemDrawAmount"
+        column="max_item_draw_amount"
+        type="java.math.BigDecimal"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="maxDayAmount"
+        column="max_day_amount"
+        type="java.math.BigDecimal"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="canPay"
+        column="can_pay"
+        type="java.lang.Long"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="mobilePhone"
+        column="mobile_phone"
+        type="string"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="currentLoginDate"
+        column="current_login_date"
+        type="java.sql.Timestamp"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="rank"
+        column="rank"
+        type="java.lang.Long"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="companyName"
+        column="company_name"
+        type="string"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+
+
+
+  	<set
+      name="sysLogs"
+      inverse="true"
+  	  cascade="all-delete-orphan"
+      >
+          <key>
+  		        <column name="agent_id" />
+          </key>
+          <one-to-many 
+              class="com.fordays.fdpay.system.SysLog"
+          />
+    </set>
+  	<set
+      name="taskTimestamps"
+      inverse="true"
+  	  cascade="all-delete-orphan"
+      >
+          <key>
+  		        <column name="agent_id" />
+          </key>
+          <one-to-many 
+              class="com.fordays.fdpay.system.TaskTimestamp"
+          />
+    </set>
+  	<set
+      name="draws"
+      inverse="true"
+  	  cascade="all-delete-orphan"
+      >
+          <key>
+  		        <column name="agent_id" />
+          </key>
+          <one-to-many 
+              class="com.fordays.fdpay.transaction.Draw"
+          />
+    </set>
+  	<set
+      name="charges"
+      inverse="true"
+  	  cascade="all-delete-orphan"
+      >
+          <key>
+  		        <column name="agent_id" />
+          </key>
+          <one-to-many 
+              class="com.fordays.fdpay.transaction.Charge"
+          />
+    </set>
+  	<set
+      name="chargeLogs"
+      inverse="true"
+  	  cascade="all-delete-orphan"
+      >
+          <key>
+  		        <column name="agent_id" />
+          </key>
+          <one-to-many 
+              class="com.fordays.fdpay.transaction.ChargeLog"
+          />
+    </set>
+  	<set
+      name="drawLogs"
+      inverse="true"
+  	  cascade="all-delete-orphan"
+      >
+          <key>
+  		        <column name="agent_id" />
+          </key>
+          <one-to-many 
+              class="com.fordays.fdpay.transaction.DrawLog"
+          />
+    </set>
+  	<set
+      name="orderDetailss"
+      inverse="true"
+  	  cascade="all-delete-orphan"
+      >
+          <key>
+  		        <column name="buyer_agent_id" />
+          </key>
+          <one-to-many 
+              class="com.fordays.fdpay.transaction.OrderDetails"
+          />
+    </set>
+  	<set
+      name="debitLogs"
+      inverse="true"
+  	  cascade="all-delete-orphan"
+      >
+          <key>
+  		        <column name="agent_id" />
+          </key>
+          <one-to-many 
+              class="com.fordays.fdpay.transaction.DebitLog"
+          />
+    </set>
+  	<set
+      name="debits"
+      inverse="true"
+  	  cascade="all-delete-orphan"
+      >
+          <key>
+  		        <column name="to_agent_id" />
+          </key>
+          <one-to-many 
+              class="com.fordays.fdpay.transaction.Debit"
+          />
+    </set>
+  	<set
+      name="expenseLogs"
+      inverse="true"
+  	  cascade="all-delete-orphan"
+      >
+          <key>
+  		        <column name="agent_id" />
+          </key>
+          <one-to-many 
+              class="com.fordays.fdpay.transaction.ExpenseLog"
+          />
+    </set>
+  	<set
+      name="expenses"
+      inverse="true"
+  	  cascade="all-delete-orphan"
+      >
+          <key>
+  		        <column name="from_agent_id" />
+          </key>
+          <one-to-many 
+              class="com.fordays.fdpay.transaction.Expense"
+          />
+    </set>
+  	<set
+      name="accounts"
+      inverse="true"
+  	  cascade="all-delete-orphan"
+      >
+          <key>
+  		        <column name="agent_id" />
+          </key>
+          <one-to-many 
+              class="com.fordays.fdpay.agent.Account"
+          />
+    </set>
+  	<set
+      name="agentAddresss"
+      inverse="true"
+  	  cascade="all-delete-orphan"
+      >
+          <key>
+  		        <column name="agent_id" />
+          </key>
+          <one-to-many 
+              class="com.fordays.fdpay.agent.AgentAddress"
+          />
+    </set>
+  	<set
+      name="agentContacts"
+      inverse="true"
+  	  cascade="all-delete-orphan"
+      >
+          <key>
+  		        <column name="agent_id" />
+          </key>
+          <one-to-many 
+              class="com.fordays.fdpay.agent.AgentContact"
+          />
+    </set>
+  	<set
+      name="agentCoteries"
+      inverse="true"
+  	  cascade="all-delete-orphan"
+      >
+          <key>
+  		        <column name="agent_id" />
+          </key>
+          <one-to-many 
+              class="com.fordays.fdpay.agent.AgentCoterie"
+          />
+    </set>
+  	<set
+      name="coteries"
+      inverse="true"
+  	  cascade="all-delete-orphan"
+      >
+          <key>
+  		        <column name="agent_id" />
+          </key>
+          <one-to-many 
+              class="com.fordays.fdpay.agent.Coterie"
+          />
+    </set>
+  	<set
+      name="agentRelationships"
+      inverse="true"
+  	  cascade="all-delete-orphan"
+      >
+          <key>
+  		        <column name="agent_id" />
+          </key>
+          <one-to-many 
+              class="com.fordays.fdpay.agent.AgentRelationship"
+          />
+    </set>
+  	<set
+      name="agentUsers"
+      inverse="true"
+  	  cascade="all-delete-orphan"
+      >
+          <key>
+  		        <column name="agent_id" />
+          </key>
+          <one-to-many 
+              class="com.fordays.fdpay.agent.AgentUser"
+          />
+    </set>
+  	<set
+      name="agentBalances"
+      inverse="true"
+  	  cascade="all-delete-orphan"
+      >
+          <key>
+  		        <column name="agent_id" />
+          </key>
+          <one-to-many 
+              class="com.fordays.fdpay.agent.AgentBalance"
+          />
+    </set>
+    <many-to-one
+        name="certInfo"
+        class="com.fordays.fdpay.agent.CertInfo"
+        not-null="false"
+    >
+
+        <column name="cert_id" />
+    </many-to-one>
+</class>
+
+</hibernate-mapping>

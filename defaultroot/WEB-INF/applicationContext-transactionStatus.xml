@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-lazy-init="false" default-autowire="no"
+	default-dependency-check="none">
+	<bean name="/system/transactionStatuslist"
+		class="com.fordays.fdpay.system.action.TransactionStatusListAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="transactionStatusBiz">
+			<ref bean="transactionStatusBiz" />
+		</property>
+	</bean>
+	
+	<bean name="/system/transactionStatus"
+		class="com.fordays.fdpay.system.action.TransactionStatusAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="transactionStatusBiz">
+			<ref bean="transactionStatusBiz" />
+		</property>
+	</bean>
+	
+	<bean id="transactionStatusBiz"
+		class="com.fordays.fdpay.system.biz.TransactionStatusBizImp">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionStatusDAO">
+			<ref bean="transactionStatusDAO" />
+		</property>
+	</bean>
+	
+	<bean id="transactionStatusDAO"
+		class="com.fordays.fdpay.system.dao.TransactionStatusDAOImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+</beans>

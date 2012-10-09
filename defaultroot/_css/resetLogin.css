@@ -1,0 +1,53 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+}
+
+input {
+	border: 1px solid #f0f0f0;
+	border-top: 1px solid #adafb5;
+	vertical-align: middle;
+	padding: 2px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal; 
+	font-size: 100%;
+}
+
+cite, em, dfn { 
+	font-style: italic; 
+}
+
+sup { 
+	position: relative; 
+	bottom: 0.3em; 
+	vertical-align: baseline; 
+}
+
+sub { 
+	position: relative; 
+	bottom: -0.2em; 
+	vertical-align: baseline; 
+}
+
+ol, ul {
+	list-style: none; 
+}
+
+table { 
+	border-collapse: collapse; 
+	border-spacing: 0; 
+}
+
+th, td { 
+	font-weight: normal; 
+	text-align: left; 
+}
+
+.clear {
+	margin: 0;
+	padding: 0;
+	clear: both; 
+}

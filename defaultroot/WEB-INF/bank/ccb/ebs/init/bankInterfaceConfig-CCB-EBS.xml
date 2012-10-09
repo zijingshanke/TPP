@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<BANK>
+	<CCB>
+		<!-- 建设银行外联平台前置机配置 -->
+		<EBS>		
+			<!-- 客户端连接 -->
+			<ClientConn>
+				<clientHost>192.168.1.11</clientHost>
+				<clientPort>6666</clientPort>
+				
+				<!-- 客户号(珠海市钱门网络科技有限公司) -->
+				<CUST_ID>GD440400000152716#02</CUST_ID>
+				<!-- 语言 -->
+				<LANGUAGE>CN</LANGUAGE>
+				<!-- 操作员信息必须匹配 -->
+				<!-- 操作员号 -->
+				<USER_ID>WLPT01</USER_ID>
+				<!-- 操作员密码 -->
+				<PASSWORD>888888</PASSWORD>
+				<!-- 二号操作员-->
+				<!-- 
+					<USER_ID>WLPT02</USER_ID>
+					<PASSWORD>888888</PASSWORD>
+				-->
+				<!-- 操作码 -->
+				<TX_CODE>6W9101</TX_CODE>
+			</ClientConn>
+			
+			<!-- 余额查询 -->
+			<AccountInfo>
+				<!-- 账号 -->
+				<ACC_NO>44001646343053000762</ACC_NO>
+				<TX_CODE>6W0100</TX_CODE>
+			</AccountInfo>
+			
+			<!-- 单笔代发代扣 -->
+			<SinglePayrollCredit>
+				<!-- 转出帐号 -->
+				<ACC_NO1>44001646343053000762</ACC_NO1>
+				<TX_CODE>6W1303</TX_CODE>
+			</SinglePayrollCredit>
+
+			<!-- 批量代发代扣 -->
+			<BatchPayrollCredit>
+				<!-- 转出帐号 -->
+				<ACC_NO1>44001646343053000762</ACC_NO1>
+				<TX_CODE>6W1303</TX_CODE>
+			</BatchPayrollCredit>
+		</EBS>
+	</CCB>
+</BANK>

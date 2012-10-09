@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-lazy-init="false" default-autowire="no"
+	default-dependency-check="none">
+	
+	<bean name="/watch/watch"
+		class="com.fordays.fdpay.watch.action.WatchAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="watchBiz">
+			<ref bean="watchBiz"/>
+		</property>
+	</bean>
+	
+	<bean id="watchBiz"
+		class="com.fordays.fdpay.watch.biz.WatchBizImp">
+		<property name="agentDAO">
+			<ref bean="agentDAO" />
+		</property>
+		<property name="tasktimestampDAO">
+			<ref bean="tasktimestampDAO" />
+		</property>
+	</bean>
+	 
+</beans>

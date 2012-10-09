@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- [syncWithModel=true] -->
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-lazy-init="true">  
+
+  <bean id="SysLog_Entity" class="com.fordays.fdpay.system.SysLog" >
+    <property name="metaName_" value="orm/com/fordays/fdpay/system/SysLog.meta.xml" />
+  </bean>
+  
+  <bean id="LogDetail_Entity" class="com.fordays.fdpay.system.LogDetail" >
+    <property name="metaName_" value="orm/com/fordays/fdpay/system/LogDetail.meta.xml" />
+  </bean>
+  
+  <bean id="SysConfig_Entity" class="com.fordays.fdpay.system.SysConfig" >
+    <property name="metaName_" value="orm/com/fordays/fdpay/system/SysConfig.meta.xml" />
+  </bean>
+  
+  <bean id="PatternEmail_Entity" class="com.fordays.fdpay.system.PatternEmail" >
+    <property name="metaName_" value="orm/com/fordays/fdpay/system/PatternEmail.meta.xml" />
+  </bean>
+  
+  <bean id="PatternShortMessage_Entity" class="com.fordays.fdpay.system.PatternShortMessage" >
+    <property name="metaName_" value="orm/com/fordays/fdpay/system/PatternShortMessage.meta.xml" />
+  </bean>
+  
+  <bean id="Province_Entity" class="com.fordays.fdpay.system.Province" >
+    <property name="metaName_" value="orm/com/fordays/fdpay/system/Province.meta.xml" />
+  </bean>
+  
+  <bean id="City_Entity" class="com.fordays.fdpay.system.City" >
+    <property name="metaName_" value="orm/com/fordays/fdpay/system/City.meta.xml" />
+  </bean>
+  
+  <bean id="Bank_Entity" class="com.fordays.fdpay.system.Bank" >
+    <property name="metaName_" value="orm/com/fordays/fdpay/system/Bank.meta.xml" />
+  </bean>
+  
+  <bean id="TaskTimestamp_Entity" class="com.fordays.fdpay.system.TaskTimestamp" >
+    <property name="metaName_" value="orm/com/fordays/fdpay/system/TaskTimestamp.meta.xml" />
+  </bean>
+  
+  <bean id="LoginLog_Entity" class="com.fordays.fdpay.system.LoginLog" >
+    <property name="metaName_" value="orm/com/fordays/fdpay/system/LoginLog.meta.xml" />
+  </bean>
+  
+
+</beans>

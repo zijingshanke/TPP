@@ -1,0 +1,20 @@
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by ccggyy2002 (Delphi) -->
+<struts-config>
+	<form-beans>
+		<form-bean name="actionLogListForm"
+			type="com.fordays.fdpay.cooperate.ActionLogListForm" />
+		
+		<form-bean name="actionLog"
+			type="com.fordays.fdpay.cooperate.ActionLog" />
+	</form-beans>
+
+	<action-mappings>
+		<action name="actionLogListForm" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/cooperate/actionLoglist" validate="false">
+			<forward name="listActionLog" path="/transaction/listActionLog.jsp">
+			</forward>
+		</action>
+	</action-mappings>
+</struts-config>

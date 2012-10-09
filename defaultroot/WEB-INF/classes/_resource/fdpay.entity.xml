@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- [syncWithModel=true] -->
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-lazy-init="true">
+
+  <import resource="com/fordays/fdpay/agent.entity.xml" />
+  
+  <import resource="com/fordays/fdpay/cooperate.entity.xml" />
+  
+  <import resource="com/fordays/fdpay/right.entity.xml" />
+  
+  <import resource="com/fordays/fdpay/system.entity.xml" />
+  
+  <import resource="com/fordays/fdpay/transaction.entity.xml" />
+  
+  <import resource="com/fordays/fdpay/user.entity.xml" />
+  
+
+</beans>

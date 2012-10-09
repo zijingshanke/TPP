@@ -1,0 +1,139 @@
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by ccggyy2002 (Delphi) -->
+
+<struts-config>
+	<form-beans>
+		<form-bean name="mailAgentListForm"
+			type="com.fordays.fdpay.agent.MailAgentListForm">
+		</form-bean>
+		
+		<form-bean name="agentListForm"
+			type="com.fordays.fdpay.agent.AgentListForm" />
+
+		<form-bean name="agentCoterie"
+			type="com.fordays.fdpay.agent.AgentCoterie" />
+
+		<form-bean name="agentCoterieListForm"
+			type="com.fordays.fdpay.agent.AgentCoterieListForm" />
+
+		<form-bean name="coterie"
+			type="com.fordays.fdpay.agent.Coterie" />
+			
+		<form-bean name="agent"
+			type="com.fordays.fdpay.agent.Agent" />
+
+		<form-bean name="coterieListForm"
+			type="com.fordays.fdpay.agent.CoterieListForm" />
+			
+		<form-bean name="agentRelationship"
+			type="com.fordays.fdpay.agent.AgentRelationship" />
+
+		<form-bean name="agentRelationshipListForm"
+			type="com.fordays.fdpay.agent.AgentRelationshipListForm" />	
+			<form-bean name="agentAddressListForm"
+			type="com.fordays.fdpay.agent.AgentAddressListForm" />
+			
+			<form-bean name="agentContactListForm"
+			type="com.fordays.fdpay.agent.AgentContactListForm" />
+			
+			<form-bean name="agentContact"
+			type="com.fordays.fdpay.agent.AgentContact" />
+			
+			<form-bean name="agentBalancePointListForm"
+			type="com.fordays.fdpay.agent.AgentBalancePointListForm" />
+	</form-beans>
+
+
+	<action-mappings>
+
+		<action name="mailAgentListForm" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/agent/mailagentlist" validate="false">
+			<forward name="listAgent" path="/system/listAgent.jsp">
+			</forward>
+		</action>
+		
+		<action name="agent" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/agent/agent" validate="false">
+			<forward name="listuser" path="/agent/agentlist.do" />
+			<forward name="listaccount" path="/agent/listAccount.jsp"></forward>
+			<forward name="listagentaddress" path="/agent/listAgentAddress.jsp" />
+			<forward name="listagentcontact" path="/agent/listAgentContact.jsp" />
+			<forward name="viewCertInfo" path="/agent/viewCertInfo.jsp" />
+			<forward name="editMoney" path="/agent/editMoney.jsp" />
+		</action>
+		<action name="agentListForm" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/agent/agentlist" validate="false">
+			<forward name="selectAgent"
+				path="/system/selectAgent.jsp">
+			</forward>
+			<forward name="editagent" path="/agent/editAgent.jsp" />
+			<forward name="listagent" path="/agent/listAgent.jsp" />
+			<forward name="listagentBalance" path="/agent/listAgentBalance.jsp" />
+			<forward name="editagentPassword" path="/agent/editAgentPassword.jsp" />
+			<forward name="editagentpersonal" path="/agent/editAgentPersonal.jsp" />
+			<forward name="editAccountStatus" path="/agent/editAccountStatus.jsp" />
+			<forward name="viewagent" path="/agent/viewAgent.jsp" />
+			<forward name="listagentrelation" path="/agent/listAgentRelation.jsp" />
+			<forward name="editDefaultAmount" path="/agent/editDefaultAmount.jsp" />
+			
+			
+		</action>
+
+		<action name="agentCoterie" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/agent/agentcoterie" validate="false">
+			<forward name="listagentcoterie"
+				path="/agent/agentcoterielist.do" />
+		</action>
+		<action name="agentCoterieListForm" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/agent/agentcoterielist" validate="false">
+			<forward name="listagentcoterie"
+				path="/agent/listAgentCoterie.jsp" />
+			<forward name="editagentcoterie"
+				path="/agent/editAgentCoterie.jsp" />
+				<forward name="addAllAgentCoterie" path="/agent/addAllAgentCoterie.jsp" />
+		</action>
+
+		<action name="coterie" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/agent/coterie" validate="false">
+			<forward name="listcoterie" path="/agent/coterielist.do" />
+		</action>
+		<action name="coterieListForm" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/agent/coterielist" validate="false">
+			<forward name="listcoterie" path="/agent/listCoterie.jsp" />
+			<forward name="editcoterie" path="/agent/editCoterie.jsp" />
+		</action>
+		<action name="agentRelationship" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/agent/agentRelationship" validate="false">
+		</action>
+		<action name="agentRelationshipListForm" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/agent/agentRelationshiplist" validate="false">
+			<forward name="listagentchild" path="/agent/listAgentChild.jsp"></forward>
+			<forward name="listagentparent" path="/agent/listAgentParent.jsp"></forward>
+		</action>
+		
+			<action name="agentBalancePointListForm" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/agent/agentBalancePointlist" validate="false">
+			<forward name="listagentbalancePoint" path="/agent/listAgentBalancePoint.jsp"></forward>
+			<forward name="editAgentbalancePoint" path="/agent/editAgentBalancePoint.jsp"></forward>
+		</action>
+		
+
+	</action-mappings>
+	<!--		
+		<message-resources null="false" parameter="ApplicationResources" />
+		<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml" property="pathnames" />
+		</plug-in>
+	-->
+
+</struts-config>

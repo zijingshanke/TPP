@@ -1,0 +1,59 @@
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by ccggyy2002 (Delphi) -->
+
+<struts-config>
+	<form-beans>
+
+		<form-bean name="roleForm"
+			type="com.fordays.fdpay.right.RoleForm" />
+		<form-bean name="roleRightForm"
+			type="com.fordays.fdpay.right.RoleRightForm" />
+		<form-bean name="roleListForm"
+			type="com.fordays.fdpay.right.RoleListForm" />
+		<form-bean name="certificationForm"
+			type="com.fordays.fdpay.security.CertificationForm" />
+
+	</form-beans>
+	<action-mappings>
+
+
+
+		<action name="roleForm"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			validate="false" path="/right/role">
+			<forward name="rolelist"
+				path="/right/rolelist.do?thisAction" />
+			<forward name="indexsys"
+				path="/right/rolelist.do?thisAction=sys" />
+			<forward name="indexuser"
+				path="/right/rolelist.do?thisAction=user" />
+		</action>
+		<action name="roleRightForm"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			validate="false" path="/right/roleright">
+			<forward name="indexsys"
+				path="/right/rolelist.do?thisAction=sys" />
+		</action>
+
+		<action name="roleListForm"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			validate="false" path="/right/rolelist">
+			<forward name="indexsys" path="/right/index.jsp" />
+			<forward name="indexuser" path="/right/indexUser.jsp" />
+			<forward name="indexright" path="/right/indexRight.jsp" />
+			<forward name="rolelist" path="/right/index.jsp" />
+			<forward name="newrole" path="/right/newRole.jsp" />
+			<forward name="editrole" path="/right/editRole.jsp" />
+			<forward name="newsysright" path="/right/newRight.jsp" />
+			<forward name="editsysright" path="/right/editRight.jsp" />
+			<forward name="editroleright"
+				path="/right/editRoleRight.jsp" />
+			<forward name="editselecteduserright"
+				path="/right/editSelectedUserRight.jsp" />
+			<forward name="edituser4role"
+				path="/right/editUser4Role.jsp" />
+			<forward name="editrole4user"
+				path="/right/editRole4User.jsp" />
+		</action>
+	</action-mappings>
+</struts-config>

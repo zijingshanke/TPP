@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- [syncWithModel=true] -->
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-lazy-init="true">  
+
+  <bean id="OrderDetails_Entity" class="com.fordays.fdpay.transaction.OrderDetails" >
+    <property name="metaName_" value="orm/com/fordays/fdpay/transaction/OrderDetails.meta.xml" />
+  </bean>
+  
+  <bean id="Transaction_Entity" class="com.fordays.fdpay.transaction.Transaction" >
+    <property name="metaName_" value="orm/com/fordays/fdpay/transaction/Transaction.meta.xml" />
+  </bean>
+  
+  <bean id="TransactionStatus_Entity" class="com.fordays.fdpay.transaction.TransactionStatus" >
+    <property name="metaName_" value="orm/com/fordays/fdpay/transaction/TransactionStatus.meta.xml" />
+  </bean>
+  
+  <bean id="Charge_Entity" class="com.fordays.fdpay.transaction.Charge" >
+    <property name="metaName_" value="orm/com/fordays/fdpay/transaction/Charge.meta.xml" />
+  </bean>
+  
+  <bean id="ChargeLog_Entity" class="com.fordays.fdpay.transaction.ChargeLog" >
+    <property name="metaName_" value="orm/com/fordays/fdpay/transaction/ChargeLog.meta.xml" />
+  </bean>
+  
+  <bean id="Draw_Entity" class="com.fordays.fdpay.transaction.Draw" >
+    <property name="metaName_" value="orm/com/fordays/fdpay/transaction/Draw.meta.xml" />
+  </bean>
+  
+  <bean id="DrawLog_Entity" class="com.fordays.fdpay.transaction.DrawLog" >
+    <property name="metaName_" value="orm/com/fordays/fdpay/transaction/DrawLog.meta.xml" />
+  </bean>
+  
+  <bean id="Logistics_Entity" class="com.fordays.fdpay.transaction.Logistics" >
+    <property name="metaName_" value="orm/com/fordays/fdpay/transaction/Logistics.meta.xml" />
+  </bean>
+  
+
+</beans>

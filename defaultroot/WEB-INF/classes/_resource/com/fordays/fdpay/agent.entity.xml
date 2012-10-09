@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- [syncWithModel=true] -->
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-lazy-init="true">  
+
+  <bean id="Agent_Entity" class="com.fordays.fdpay.agent.Agent" >
+    <property name="metaName_" value="orm/com/fordays/fdpay/agent/Agent.meta.xml" />
+  </bean>
+  
+  <bean id="Account_Entity" class="com.fordays.fdpay.agent.Account" >
+    <property name="metaName_" value="orm/com/fordays/fdpay/agent/Account.meta.xml" />
+  </bean>
+  
+  <bean id="AgentAddress_Entity" class="com.fordays.fdpay.agent.AgentAddress" >
+    <property name="metaName_" value="orm/com/fordays/fdpay/agent/AgentAddress.meta.xml" />
+  </bean>
+  
+  <bean id="Coterie_Entity" class="com.fordays.fdpay.agent.Coterie" >
+    <property name="metaName_" value="orm/com/fordays/fdpay/agent/Coterie.meta.xml" />
+  </bean>
+  
+  <bean id="AgentContact_Entity" class="com.fordays.fdpay.agent.AgentContact" >
+    <property name="metaName_" value="orm/com/fordays/fdpay/agent/AgentContact.meta.xml" />
+  </bean>
+  
+  <bean id="AgentCoterie_Entity" class="com.fordays.fdpay.agent.AgentCoterie" >
+    <property name="metaName_" value="orm/com/fordays/fdpay/agent/AgentCoterie.meta.xml" />
+  </bean>
+  
+  <bean id="MailAgent_Entity" class="com.fordays.fdpay.agent.MailAgent" >
+    <property name="metaName_" value="orm/com/fordays/fdpay/agent/MailAgent.meta.xml" />
+  </bean>
+  
+
+</beans>

@@ -1,0 +1,145 @@
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by ccggyy2002 (Delphi) -->
+
+<struts-config>
+	<form-beans>
+		<form-bean name="transactionStatus"
+			type="com.fordays.fdpay.transaction.TransactionStatus">
+		</form-bean>
+		<form-bean name="transactionStatusListForm"
+			type="com.fordays.fdpay.system.TransactionStatusListForm">
+		</form-bean>
+		<form-bean name="patternEmail"
+			type="com.fordays.fdpay.system.PatternEmail">
+		</form-bean>
+		<form-bean name="patternEmailListForm"
+			type="com.fordays.fdpay.system.PatternEmailListForm">
+		</form-bean>
+		<form-bean name="patternShortMessage"
+			type="com.fordays.fdpay.system.PatternShortMessage">
+		</form-bean>
+		<form-bean name="patternShortMessageListForm"
+			type="com.fordays.fdpay.system.PatternShortMessageListForm">
+		</form-bean>
+		<form-bean name="syslogListForm"
+			type="com.fordays.fdpay.system.SysLogListForm">
+		</form-bean>
+				<form-bean name="loginlogListForm"
+			type="com.fordays.fdpay.system.LoginLogListForm">
+		</form-bean>
+		<form-bean name="bankKey"
+			type="com.fordays.fdpay.system.BankKey">
+		</form-bean>
+		<form-bean name="bankListForm"
+			type="com.fordays.fdpay.system.BankListForm">
+		</form-bean>
+		<form-bean name="provinceListForm"
+			type="com.fordays.fdpay.system.ProvinceListForm">
+		</form-bean>
+		<form-bean name="cityListForm"
+			type="com.fordays.fdpay.system.CityListForm">
+		</form-bean>
+	</form-beans>
+	<action-mappings>
+		<action name="patternShortMessage" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/system/patternShortMessage" validate="false">
+			<forward name="viewPatternShortMessage"
+				path="/system/viewPatternShortMessage.jsp" />
+			<forward name="listPatternShortMessage"
+				path="/system/patternShortMessagelist.do" />
+		</action>
+		<action name="patternShortMessageListForm"
+			parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/system/patternShortMessagelist" validate="false">
+			<forward name="listPatternShortMessage"
+				path="/system/listPatternShortMessage.jsp" />
+			<forward name="editPatternShortMessage"
+				path="/system/editPatternShortMessage.jsp" />
+			<forward name="viewPatternShortMessage"
+				path="/system/viewPatternShortMessage.jsp" />
+		</action>
+
+		<action name="patternEmail" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/system/patternEmail" validate="false">
+			<forward name="listAgent" path="/system/listAgent.jsp"></forward>
+			<forward name="viewPatternEmail"
+				path="/system/viewPatternEmail.jsp" />
+			<forward name="listPatternEmail"
+				path="/system/patternEmaillist.do" />
+		</action>
+		<action name="patternEmailListForm" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/system/patternEmaillist" validate="false">
+			<forward name="selectAgent"
+				path="/system/selectAgent.jsp">
+			</forward>
+			<forward name="listPatternEmail"
+				path="/system/listPatternEmail.jsp" />
+			<forward name="editPatternEmail"
+				path="/system/editPatternEmail.jsp" />
+			<forward name="viewPatternEmail"
+				path="/system/viewPatternEmail.jsp" />
+		</action>
+
+		<action name="transactionStatus" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/system/transactionStatus" validate="false">
+			<forward name="viewTransactionStatus"
+				path="/system/viewTransactionStatus.jsp" />
+			<forward name="listTransactionStatus"
+				path="/system/transactionStatuslist.do" />
+		</action>
+		<action name="transactionStatusListForm" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/system/transactionStatuslist" validate="false">
+			<forward name="listTransactionStatus"
+				path="/system/listTransactionStatus.jsp" />
+			<forward name="editTransactionStatus"
+				path="/system/editTransactionStatus.jsp" />
+			<forward name="viewTransactionStatus"
+				path="/system/viewTransactionStatus.jsp" />
+		</action>
+		<action name="syslogListForm" path="/system/sysloglist"
+			parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			validate="false" scope="request">
+			<forward name="listsyslog" path="/system/listSysLog.jsp" />
+			<forward name="listclientsyslog" path="/system/listClientSysLog.jsp" />
+		</action>
+		<action name="loginlogListForm" path="/system/loginloglist"
+			parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			validate="false" scope="request">
+			<forward name="listclientloginlog" path="/system/listClientLoginLog.jsp" />
+		</action>
+		<action name="bankKey" path="/system/bankKey"
+			parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			validate="false" scope="request">
+			<forward name="editBankKey" path="/sageManagement/editBankKey.jsp" />
+			<forward name="listBank" path="/sageManagement/listBank.jsp"></forward>
+		</action>
+			<action name="bankListForm" path="/system/banklist"
+			parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			validate="false" scope="request">
+			<forward name="listbank" path="/system/listBank.jsp" />
+			<forward name="viewbank" path="/system/viewBank.jsp" />
+		</action>
+		<action name="provinceListForm" path="/system/provincelist"
+			parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			validate="false" scope="request">
+			<forward name="listprovince" path="/system/listProvince.jsp" />
+		</action>
+		<action name="cityListForm" path="/system/citylist"
+			parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			validate="false" scope="request">
+			<forward name="listcity" path="/system/listCity.jsp" />
+		</action>
+	</action-mappings>
+</struts-config>

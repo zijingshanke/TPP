@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table-config>
+	<table id="subsat" name="subsat">
+		<title>税局分类</title>
+		<xmlRoot>subsats</xmlRoot>
+		<xmlRS>subsat</xmlRS>
+		<xmlRSCount>0</xmlRSCount>
+		<field name="subsat_id">id</field>
+		<field name="subsat_name">name</field>
+		<orderBy name="subsat_name">desc</orderBy>
+		<outFileName>subsat</outFileName>
+	</table>
+	
+	
+</table-config>

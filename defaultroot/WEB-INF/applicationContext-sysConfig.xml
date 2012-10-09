@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-lazy-init="false" default-autowire="no"
+	default-dependency-check="none">
+
+
+
+	<bean name="/system/sysConfigList"
+		class="com.fordays.fdpay.system.action.SysConfigAction" singleton="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="sysConfigBiz">
+			<ref bean="sysConfigBiz" />
+		</property>
+	</bean>
+
+	<bean id="sysConfigBiz"
+		class="com.fordays.fdpay.system.biz.SysConfigBizImp">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="sysConfigDAO">
+			<ref bean="sysConfigDAO" />
+		</property>
+	</bean>
+
+	<bean id="sysConfigDAO"
+		class="com.fordays.fdpay.system.dao.SysConfigDAOImp" lazy-init="default"
+		autowire="default" dependency-check="default">
+			<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+
+</beans>

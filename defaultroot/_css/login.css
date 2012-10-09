@@ -1,0 +1,16 @@
+@charset "utf-8";
+/* CSS Document */
+body { margin:0; padding:0; font-size:12px; font-family:"宋体";}
+form { margin:0; padding:0;}
+#warp { background:url(../_img/loginimg/wamp_bgx.jpg) repeat-x; border:1px solid #D8D8D8; width:262px; height:250px; padding:10px; margin:10% auto;}
+.top_p { margin:10px 0 20px 0; font-weight:bold; font-size:14px; color:#666}
+.form_p { margin:25px 0;}
+.form_p input { vertical-align:middle; width:175px;}
+.btn1 { background:url(../_img/loginimg/btn_bg1.jpg) no-repeat; width:88px; height:22px; color:; font-weight:bold;border:none;}
+.btn_p { text-align:center; margin:50px; }
+.zhuche { margin-top:10px; background:url(../_img/loginimg/zhuche_bgx.jpg) repeat-x bottom; padding-bottom:10px;}
+.bottom_p { margin:0;}
+.bottom_p a { background:url(../_img/loginimg/btn_bg2.jpg) no-repeat; width:88px; height:15px; float:left; font-weight:bold; text-align:center; color:#000; text-decoration:none; margin-left:80px; padding-top:4px;}
+
+
+

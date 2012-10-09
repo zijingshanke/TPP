@@ -1,0 +1,4 @@
+﻿body {SCROLLBAR-BASE-COLOR:#D3E5FA;background-color:#FFFFFF}
+
+#eWebEditor_FixWidth_DIV {border-top:1px solid #000000;border-left:1px solid #000000;border-right:3px solid #000000;border-bottom:3px solid #000000;background-color:#ffffff;margin:0 auto;height:auto;position:relative;text-align:left;overflow-x:hidden;word-break:break-all;padding:2px;}
+body.eWebEditor_FixWidth_BODY {background-color:#808080;width:100%;height:auto;margin:0px;text-align:center;}

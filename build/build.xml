@@ -1,0 +1,90 @@
+<?xml version="1.0"  encoding="UTF-8" ?>
+<project name="fdpay" basedir="." default="dist">
+
+	<property name="app.name" value="fdpay" />
+	<property name="root.dir" location="F:/project/fdpay" />
+	<property name="app.dir" location="${root.dir}/defaultroot" />
+	<property name="generated.dir" location="${root.dir}/generated" />
+	<property name="build.classpath" location="D:/Program Files/Java/jdk1.5.0_03" />
+	<property name="webserver.home" location="D:/Program Files/apache-tomcat-5.5.33" />
+
+
+	<property name="webserver.deploy" location="${webserver.home}/webapps" />
+	<property name="src.dir" location="${root.dir}/src" />
+	<property name="class.dir" location="${app.dir}/WEB-INF/classes" />
+	<property name="lib.dir" location="${app.dir}/WEB-INF/lib" />
+	<property name="dist.dir" location="${root.dir}/dist" />
+	<property name="doc.dir" location="${root.dir}/api" />
+
+	<echo>app.name: ${app.name}</echo>
+	<echo>app.dir: ${app.dir}</echo>
+	<echo>webserver.home:${webserver.home}</echo>
+	<echo>webserver.deploy:${webserver.deploy}</echo>
+	<echo>src.dir:${src.dir}</echo>
+	<echo>build.dir:${build.dir}</echo>
+	<echo>lib.dir:${lib.dir}</echo>
+	<echo>dist.dir:${dist.dir}</echo>
+	<echo>doc.dir:${doc.dir}</echo>
+
+	<!-- 设置应用环境变量-->
+	<path id="compile.classpath">
+		<pathelement path="${class.dir}" />
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+
+	<!-- 初始化应用程序，删除相关目录-->
+	<target name="clean" description="Delete build files">
+		<delete dir="${class.dir}" />
+		<delete dir="${dist.dir}" />
+	</target>
+
+
+	<!-- 初始化创建相关应用目录   -->
+	<target name="prepare" depends="clean" description="create build,dist files">
+		<mkdir dir="${class.dir}" />
+		<mkdir dir="${dist.dir}" />
+	</target>
+
+	<!-- compile 命令，执行javac编译命令 -->
+	<target name="compile" depends="prepare">
+		<javac srcdir="${src.dir}" destdir="${class.dir}" debug="on">
+			<!--给编译器指定编码，防止出现："警告： 编码 GBK 的不可映射字符"-->
+			<compilerarg line="-encoding UTF-8 " />
+			<classpath refid="compile.classpath" />
+		</javac>
+
+		<copy todir="${class.dir}" includeEmptyDirs="no">
+			<fileset dir="${src.dir}">
+				<include name="*.properties" />
+			</fileset>
+		</copy>
+
+		<copy todir="${class.dir}/_config" includeEmptyDirs="no">
+			<fileset dir="${src.dir}/_config" />
+		</copy>
+		<copy todir="${class.dir}/_resource" includeEmptyDirs="no">
+			<fileset dir="${src.dir}/_resource" />
+		</copy>
+	</target>
+
+
+	<!-- 部署应用程序，将其打为mshome.war包，依赖于 compile命令 -->
+	<target name="dist" depends="compile">
+		<war warfile="${dist.dir}/${app.name}.war" webxml="${app.dir}/WEB-INF/web.xml" defaultexcludes="true">
+			<fileset dir="${app.dir}">
+				<!--部署到WebSpere(类加载检查严格),使用p6spy.jar驱动Oracle时，同时要有dms.jar-->
+				<patternset id="notcopyojdbc14_g">
+					<exclude name="**/ojdbc14_g.jar" />
+					<exclude name="**/ojdbc14dms_g.jar" />
+					<exclude name="**/WMQ/*.*" />
+				</patternset>
+			</fileset>
+		</war>
+	</target>
+
+
+
+</project>

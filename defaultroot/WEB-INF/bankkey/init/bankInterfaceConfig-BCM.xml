@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+
+<BOCOMB2C>
+	<!-- 交通银行接口配置 -->
+	<!-- 交行提供，格式未改-->
+
+	<!--API请求URL -->
+	<!--测试环境:https://ebanktest.95559.com.cn/corporbank/NsTrans-->
+	<!--生产系统:https://ebank.95559.com.cn/corporbank/NsTrans -->
+	<ApiURL>https://ebank.95559.com.cn/corporbank/NsTrans</ApiURL>
+
+	<!-- 订单支付请求URL-->
+	<!--测试环境1,https://61.172.242.228/netpay/MerPayB2C-->
+	<!--测试环境2,https://pbanktest.95559.com.cn/netpay/MerPayB2C-->
+	<!--生产系统, https://pbank.95559.com.cn/netpay/MerPayB2C-->
+	<OrderURL>https://pbank.95559.com.cn/netpay/MerPayB2C</OrderURL>
+	
+	<!--商户可修改参数-->
+	<!--日志开关（true:表示写日志,false）-->
+	<EnableLog>true</EnableLog>
+	<!--日志文件存放目录-->
+	<LogPath>bankkey/bcm/log</LogPath>
+	<!--下载结算明细文件存放目录-->
+	<SettlementFilePath>bankkey/bcm/settlement</SettlementFilePath>
+	<!--商户证书文件（绝对路径-->
+	<!-- 测试：301310063009501.PFX -->
+	<MerchantCertFile>bankkey/bcm/cert/qmpayb2c20090923.pfx</MerchantCertFile>
+	<!--私钥加密密码-->
+	<MerchantCertPassword>12345678</MerchantCertPassword>
+	<!--测试环境根证书文件,商户上线时该根证书换为交通银行生产根证书root.cer-->
+	<!-- test_root.cer -->
+	<RootCertFile>bankkey/bcm/cert/root.cer</RootCertFile>
+
+	<!-- 商户自定义配置段 -->
+	<!-- 消息版本号 固定为 1.0.0.0 -->
+	<interfaceVersion>1.0.0.0</interfaceVersion>
+	<!--  交易类别 0: B2C -->
+	<tranType>0</tranType>
+	<!-- 订单币种 CNY:人民币 -->
+	<curType>CNY</curType>
+	<!-- 物流配送标志 0 非物流 1 物流配送 -->
+	<phdFlag>0</phdFlag>
+	<!-- 渠道编号 固定填0:HTML渠道 -->
+	<netType>0</netType>
+	<!--  通知方式 0 不通知 1 通知 2 转页面 -->
+	<notifyType>1</notifyType>
+	
+	<!-- 主动通知URL，为空则不发通知 -->
+	<merURL></merURL>
+	<!-- 取货URL 为空则不显示按钮，不自动跳转 -->
+	<!-- 125.89.68.86/fdpay-client -->
+	<goodsURL>http://125.89.68.86/fdpay-client/bank/bcmb2cResult.do</goodsURL>
+	
+	<!-- 自动跳转时间 等待n 秒后自动跳转取货URL 若不填写则表示不自动跳转 -->
+	<jumpSeconds>3</jumpSeconds>
+	<!-- 商户批次号，商家可填入自己的批次号，对账使用 -->
+	<payBatchNo></payBatchNo>
+	<!-- 代理商家名称，二级商户编号/或证件号码 -->
+	<proxyMerName></proxyMerName>
+	<!-- 代理商家证件类型，代理商家证件类型 -->
+	<proxyMerType></proxyMerType>
+	<!-- 代理商家证件号码 -->
+	<proxyMerCredentials></proxyMerCredentials>
+	
+	
+	<!-- 订单查询API配置 -->
+	<APIHost>ebank.95559.com.cn</APIHost>
+	<APIServerPath>/corporbank/NsTrans</APIServerPath>
+
+	<storeFile>bankkey/bcm/truststore/qmpayb2c20090923store</storeFile>
+	<trustFile>bankkey/bcm/truststore/qmpayb2c20091026trust</trustFile>
+
+	<!--生产环境:IbmX509 测试环境:SUNX509-->
+	<storeInstance>IbmX509</storeInstance>
+	<!--生产环境:IbmPKIX 测试环境:SUNX509-->
+	<trustInstance>IbmPKIX</trustInstance>
+	<storePassword>12345678</storePassword>
+</BOCOMB2C>

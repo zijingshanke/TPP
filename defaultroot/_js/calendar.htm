@@ -1,0 +1,131 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<style type=text/css>
+td{font-size:12;font-family:arial;text-align:center}
+td.dt{font-size:11;font-family:arial;text-align:center}
+a{color:blue}
+a:hover{color:red}
+a.bt{color:#888888}
+</style>
+<script language=javascript>
+<!--//
+var cm;
+var str='',i,j,yy,MM,hh,mm,openbound,callback;
+var fld1,fld2;
+var wp=window.parent;
+var cf=wp.document.getElementById("CalFrame");
+var fld,curday,today=new Date();
+//today.setHours(0);today.setMinutes(0);today.setSeconds(0);today.setMilliseconds(0);
+//var lastyear=today.getYear(),lastmonth=today.getMonth();
+function parseDate(s)
+{
+	var reg=new RegExp("[^0-9-]","")
+	if(s.search(reg)>=0)return today;
+	var ss=s.split("-");
+	if(ss.length!=3)return today;
+	if(isNaN(ss[0])||isNaN(ss[1])||isNaN(ss[2]))return today;
+	return new Date(parseFloat(ss[0]),parseFloat(ss[1])-1,parseFloat(ss[2]));
+}
+function resizeCalendar(){cf.width=144;cf.height=192;}
+function initCalendar(c)
+{
+ cm=c;
+	if(fld1&&fld1.value.length>0){curday=parseDate(fld1.value);}
+	else if(fld2&&fld2.value.length>0){curday=parseDate(fld2.value);}
+	else curday=today;
+	drawCalendar(curday.getFullYear(),curday.getMonth());
+}
+function drawCalendar(y,m)
+{
+	var x=new Date(y,m,1),mv=x.getDay(),d=x.getDate(),de;
+	yy=x.getFullYear();MM=x.getMonth();
+	document.getElementById("yyyymm").innerHTML=yy+"."+(MM+1>9?MM+1:"0"+(MM+1));
+	for(var i=1;i<=mv;i++)
+	{
+		de=document.getElementById("d"+i);
+		de.innerHTML="";
+		de.bgColor="";
+	}
+	while(x.getMonth()==MM)
+	{
+		de=document.getElementById("d"+(d+mv));
+		if(x.getTime()==curday.getTime())
+			de.bgColor="#dddddd";
+		else
+			de.bgColor="white";
+		if(x.getTime()==today.getTime())
+			de.innerHTML="<a href=javascript:setDate("+d+");><font color=red>"+d+"</font></a>";
+		else if(x.getTime()<today.getTime())
+			if(openbound){de.innerHTML="<a href=javascript:setDate("+d+"); class=bt>"+d+"</a>";}
+			else{de.innerHTML="<font color=#888888>"+d+"</font>";}
+		else
+			de.innerHTML="<a href=javascript:setDate("+d+");>"+d+"</a>";
+		x.setDate(++d);
+	}
+	while(d+mv<=42)
+	{
+		de=document.getElementById("d"+(d+mv));
+		de.innerHTML="";
+		de.bgColor="";
+		d++;
+	}
+}
+function setDate(d)
+{
+	MM=getTwoNum(MM+1)
+	d=getTwoNum(d)
+	var dstr=yy+cm+MM+cm+d;
+	alert(dstr);
+	if(callback&&callback.length>0){eval("wp."+callback+"(\""+dstr+"\")");}
+	else{fld1.value=dstr;}
+	fld1.focus();
+	wp.hideCalendar();
+}
+
+function getTwoNum(num)
+{
+  if (num<10)
+    return "0"+num;
+  else
+    return num;  
+
+}
+//-->
+</script>
+</head>
+
+<body topmargin=0 leftmargin=0 bottommargin=0 rightmargin=0 bgcolor=red onload="resizeCalendar();">
+<table id=tbl0 bgcolor=#336699 border=0 cellpadding=1 cellspacing=0><tr><td>
+<table width=100% border=0 cellpadding=2 cellspacing=1 bgcolor=white>
+<tr bgcolor=gray>
+<td width=16 id=prev><a href=javascript:drawCalendar(yy,MM-1);><img src=prev.gif border=0 width="16" height="16"></a></td>
+<td width=99% id=yyyymm style=font-size:11;color:white></td>
+<td width=16 id=next><a href=javascript:drawCalendar(yy,MM+1);><img src=next.gif border=0 width="16" height="16"></a></td>
+</tr>
+</table>
+<table width=142 border=0 bgcolor=white cellpadding=0 cellspacing=2>
+<tr height=18><td width=18><font color=red>日</font></td><td width=18>一</td><td width=18>二</td><td width=18>三</td><td width=18>四</td><td width=18>五</td><td width=18><font color=green>六</font></td></tr>
+<tr height=1><td colspan=7 bgcolor=gray></td></tr>
+<script language=javascript>
+<!--//
+for(i=0;i<6;i++)
+{
+	str+="<tr height=18>";
+	for(j=1;j<=7;j++)str+="<td id=d"+(i*7+j)+" class=dt></td>";
+	str+="</tr>";
+}
+document.write(str);
+//-->
+</script>
+<tr height=1><td colspan=7 bgcolor=gray></td></tr>
+<tr height=18><td colspan=7><a href="javascript:wp.hideCalendar();">关闭</font></a></td></tr>
+</table>
+</td></tr></table>
+<script language=javascript>
+<!--//
+var bCalLoaded=true;
+//-->
+</script>
+</body>
+</html>

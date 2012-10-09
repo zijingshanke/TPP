@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-lazy-init="false" default-autowire="no"
+	default-dependency-check="none">
+	<!-- 建设银行外联平台 -->
+	
+	<!-- 建行 外联平台 接收前置机反馈信息 Biz -->
+	<bean id="cebsBaseBiz"
+		class="com.fordays.fdpay.bank.ccb.ebs.biz.CebsBaseBizImp">
+	</bean>
+	<!-- 建行 外联平台 单笔代发代扣 Biz -->
+	<bean id="cebsSingleCreditBiz"
+		class="com.fordays.fdpay.bank.ccb.ebs.biz.SinglePayrollCreditBizImp">
+	</bean>
+	<!-- 建行 外联平台 批量代发代扣 Biz -->
+	<bean id="cebsBatchCreditBiz"
+		class="com.fordays.fdpay.bank.ccb.ebs.biz.BatchPayrollCreditBizImp">
+	</bean>
+</beans>

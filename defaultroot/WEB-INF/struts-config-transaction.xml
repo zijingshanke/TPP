@@ -1,0 +1,235 @@
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by ccggyy2002 (Delphi) -->
+
+<struts-config>
+	<form-beans>
+		<form-bean name="transaction"
+			type="com.fordays.fdpay.transaction.Transaction" />
+		<form-bean name="transactionListForm"
+			type="com.fordays.fdpay.transaction.TransactionListForm" />
+
+		<form-bean name="charge"
+			type="com.fordays.fdpay.transaction.Charge" />
+		<form-bean name="chargeListForm"
+			type="com.fordays.fdpay.transaction.ChargeListForm" />
+		<form-bean name="debit"
+			type="com.fordays.fdpay.transaction.Debit" />
+		<form-bean name="debitListForm"
+			type="com.fordays.fdpay.transaction.DebitListForm" />
+			
+		<form-bean name="debitLog"
+			type="com.fordays.fdpay.transaction.DebitLog" />
+		<form-bean name="debitLogListForm"
+			type="com.fordays.fdpay.transaction.DebitLogListForm" />
+		<form-bean name="expense"
+			type="com.fordays.fdpay.transaction.Expense" />
+		<form-bean name="expenseListForm"
+			type="com.fordays.fdpay.transaction.ExpenseListForm" />
+			
+		<form-bean name="expenseLog"
+			type="com.fordays.fdpay.transaction.ExpenseLog" />
+		<form-bean name="expenseLogListForm"
+			type="com.fordays.fdpay.transaction.ExpenseLogListForm" />
+
+		<form-bean name="chargeLog"
+			type="com.fordays.fdpay.transaction.ChargeLog" />
+		<form-bean name="chargeLogListForm"
+			type="com.fordays.fdpay.transaction.ChargeLogListForm" />
+		<form-bean name="draw"
+			type="com.fordays.fdpay.transaction.Draw" />
+		<form-bean name="drawListForm"
+			type="com.fordays.fdpay.transaction.DrawListForm" />
+		<form-bean name="drawLog"
+			type="com.fordays.fdpay.transaction.DrawLog" />
+		<form-bean name="drawLogListForm"
+			type="com.fordays.fdpay.transaction.DrawLogListForm" />
+			<form-bean name="statistic"
+			type="com.fordays.fdpay.transaction.Statistic" />
+	</form-beans>
+
+	<action-mappings>
+	
+		<action name="expense" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/transaction/expense" validate="false">
+			<forward name="editExpense"
+				path="/finance/editExpense.jsp" />
+		</action>
+		<action name="expenseListForm" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/transaction/expenselist" validate="false">
+			<forward name="listexpense"
+				path="/finance/listExpense.jsp" />
+		</action>
+		<action name="expenseLog" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/transaction/expenseLog" validate="false">
+			
+		</action>
+		<action name="expenseLogListForm" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/transaction/expenseLoglist" validate="false">
+			<forward name="listExpenseLog"
+				path="/finance/listExpenseLog.jsp" />
+			<forward name="listExpenseLogByContent"
+				path="/finance/listExpenseLogByContent.jsp" />
+		</action>
+		
+		
+		<action name="debit" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/transaction/debit" validate="false">
+			<forward name="editdebit"
+				path="/finance/editDebit.jsp" />
+		</action>
+		<action name="debitListForm" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/transaction/debitlist" validate="false">
+			<forward name="listdebit"
+				path="/finance/listDebit.jsp" />
+		</action>
+		<action name="debitLog" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/transaction/debitLog" validate="false">
+			
+		</action>
+		<action name="debitLogListForm" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/transaction/debitLoglist" validate="false">
+			<forward name="listDebitLog"
+				path="/finance/listDebitLog.jsp" />
+			<forward name="listDebitLogByContent"
+				path="/finance/listDebitLogByContent.jsp" />
+		</action>
+		
+		
+		<action name="transaction" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/transaction/transaction" validate="false">
+			<forward name="viewtransaction"
+				path="/transaction/viewTransaction.jsp" />
+			<forward name="accountDetail"
+				path="/transaction/accountDetail.jsp" />
+		</action>
+
+		<action name="transactionListForm" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/transaction/transactionlist" validate="false">
+			<forward name="listtransaction"
+				path="/transaction/listTransaction.jsp" />
+			<forward name="edittransaction"
+				path="/transaction/editTransaction.jsp" />
+			<forward name="viewtransaction"
+				path="/transaction/viewTransaction.jsp" />
+			<forward name="listTransactionByAgent"
+				path="/transaction/listTransactionByAgent.jsp" />
+			<forward name="listTransactionBalanceByAgent"
+				path="/transaction/listTransactionBalanceByAgent.jsp" />
+		</action>
+
+
+		<action name="charge" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/transaction/charge" validate="false">
+
+			<forward name="editcharge"
+				path="/transaction/editCharge.jsp">
+			</forward>
+			<forward name="listChargeLogByContent" path="/transaction/listChargeLogByContent.jsp"></forward>
+		</action>
+
+		<action name="chargeListForm" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/transaction/chargelist" validate="false">
+			<forward name="listGeneralCharge" path="/transaction/listGeneralCharge.jsp"> </forward>
+			<forward name="listAllCharge" path="/transaction/listAllCharge.jsp"> </forward>
+			<forward name="editcharge" path="/transaction/editCharge.jsp"> </forward>
+			<forward name="listothercharge" path="/transaction/listOtherCharge.jsp"></forward>
+			<forward name="listChargeLogByContent" path="/transaction/listChargeLogByContent.jsp"></forward>
+		</action>
+
+		<action name="chargeLog" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/transaction/chargeLog" validate="false">
+			<forward name="listchargeLog"
+				path="/transaction/listChargeLog.jsp">
+			</forward>
+			<forward name="listChargeLogByContent" path="/transaction/listChargeLogByContent.jsp"></forward>
+		</action>
+		<action name="chargeLogListForm" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/transaction/chargeLoglist" validate="false">
+			<forward name="listchargeLog"
+				path="/transaction/listChargeLog.jsp">
+			</forward>
+			<forward name="listChargeLogByContent" path="/transaction/listChargeLogByContent.jsp"></forward>
+		</action>
+
+
+		<action name="drawLog" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/transaction/drawLog" validate="false">
+
+			<forward name="listDrawLog"
+				path="/transaction/listDrawLog.jsp">
+			</forward>
+		</action>
+
+
+		<action name="drawLogListForm" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/transaction/drawLoglist" validate="false">
+			<forward name="listDrawLog"
+				path="/transaction/listDrawLog.jsp">
+			</forward>
+			<forward name="listDrawLogByContent" path="/transaction/listDrawLogByContent.jsp"/>
+		</action>
+
+		<action name="draw" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/transaction/draw" validate="false">
+			
+			<forward name="listDraw" path="/transaction/listDraw.jsp">
+			</forward>
+			<forward name="editDraw" path="/transaction/editDraw.jsp">
+			</forward>
+			<forward name="viewDraw" path="/transaction/viewDraw.jsp">
+			</forward>
+			<forward name="editSubtract" path="/transaction/editSubtract.jsp">
+			</forward>
+		</action>
+
+
+		<action name="drawListForm" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/transaction/drawlist" validate="false">
+			
+			<forward name="listDraw" path="/transaction/listDraw.jsp">
+			</forward>
+			<forward name="listSubtract" path="/transaction/listSubtract.jsp">
+			</forward>
+			<forward name="downloadDraw" path="/transaction/downloadDraw.jsp">
+			</forward>
+			<forward name="editDraw" path="/transaction/editDraw.jsp">
+			</forward>
+			<forward name="viewDraw" path="/transaction/viewDraw.jsp" />
+		</action>
+		
+		
+		<action name="statistic" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/transaction/transactionStatistic" validate="false">
+			
+			<forward name="main" path="/main.jsp">
+			</forward>
+			
+		</action>
+	</action-mappings>
+	<!--		
+		<message-resources null="false" parameter="ApplicationResources" />
+		<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml" property="pathnames" />
+		</plug-in>
+	-->
+
+</struts-config>

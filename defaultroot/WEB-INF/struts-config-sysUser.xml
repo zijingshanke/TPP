@@ -1,0 +1,39 @@
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by ccggyy2002 (Delphi) -->
+
+<struts-config>
+	<form-beans>
+		<form-bean name="user" type="com.fordays.fdpay.user.SysUser" />
+		<form-bean name="userListForm"
+			type="com.fordays.fdpay.user.UserListForm" />
+	</form-beans>
+
+	<action-mappings>
+
+		<action name="user" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/user/user" validate="false">
+			<forward name="viewuser" path="/user/viewUser.jsp" />
+		<forward name="edituserpassword" path="/user/editUserPassword.jsp"/>
+		<forward name="editmypassword" path="/user/editMyPassword.jsp"/>
+		<forward name="loginsystem" path="/user/loginSystem.jsp"></forward>
+		<forward name="index" path="/index.jsp"></forward>
+		<forward name="login" path="/login.jsp"></forward>
+		</action>
+		<action name="userListForm" parameter="thisAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			path="/user/userlist" validate="false" scope="request" >
+			<forward name="listuser" path="/user/listUser.jsp" />
+			<forward name="edituser" path="/user/editUser.jsp" />
+			<forward name="viewuser" path="/user/viewUser.jsp" />
+
+		</action>
+	</action-mappings>
+	<!--		
+		<message-resources null="false" parameter="ApplicationResources" />
+		<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml" property="pathnames" />
+		</plug-in>
+	-->
+
+</struts-config>

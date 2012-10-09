@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-lazy-init="false" default-autowire="no"
+	default-dependency-check="none">
+
+	<bean name="/information/newslist"
+		class="com.fordays.fdpay.information.action.NewsListAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="newsBiz">
+			<ref bean="newsBiz" />
+		</property>
+	</bean>
+	<bean name="/information/news"
+		class="com.fordays.fdpay.information.action.NewsAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="newsBiz">
+			<ref bean="newsBiz" />
+		</property>
+	</bean>
+	<bean id="newsBiz"
+		class="com.fordays.fdpay.information.biz.NewsBizImpl">
+		<property name="newsDAO">
+			<ref bean="newsDAO" />
+		</property>
+	</bean>
+	<bean id="newsDAO" class="com.fordays.fdpay.information.dao.NewsDAOImpl"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-lazy-init="false" default-autowire="no"
+	default-dependency-check="none">
+
+	<bean name="/security/certificate"
+		class="com.fordays.fdpay.security.action.CertificateAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="certificationBiz">
+			<ref bean="certificationBiz" />
+		</property>
+		<property name="agentBiz">
+			<ref bean="agentBiz" />
+		</property>
+	</bean>
+
+
+	<bean id="certificationBiz"
+		class="com.fordays.fdpay.security.biz.CertificationBizImpl">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="agentDAO">
+			<ref bean="agentDAO" />
+		</property>
+
+	<property name="tasktimestampDAO">
+		<ref bean="tasktimestampDAO" />
+	</property>
+		
+	</bean>
+
+
+</beans>

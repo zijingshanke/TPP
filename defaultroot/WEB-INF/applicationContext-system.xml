@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-lazy-init="false" default-autowire="no"
+	default-dependency-check="none">
+
+	<bean id="sysInitBiz"
+		class="com.fordays.fdpay.system.biz.SysInitBizImp">
+		<property name="agentDAO">
+			<ref bean="agentDAO" />
+		</property>
+		<property name="platAgentEmail">
+			<value>qmpay@qmpay.com.cn</value>
+		</property>
+		<property name="platChargeAgentEmail">
+			<value>charge@qmpay.com.cn</value>
+		</property>
+		<property name="platRateAgentEmail">
+			<value>rate@qmpay.com.cn</value>
+		</property>
+	</bean>
+
+	<bean name="/system/patternShortMessagelist"
+		class="com.fordays.fdpay.system.action.PatternShortMessageListAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="patternShortMessageBiz">
+			<ref bean="patternShortMessageBiz" />
+		</property>
+	</bean>
+
+	<bean name="/system/patternShortMessage"
+		class="com.fordays.fdpay.system.action.PatternShortMessageAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="patternShortMessageBiz">
+			<ref bean="patternShortMessageBiz" />
+		</property>
+	</bean>
+
+	<bean name="/system/bankKey"
+		class="com.fordays.fdpay.system.action.BankKeyAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+
+	</bean>
+
+	<bean id="patternShortMessageBiz"
+		class="com.fordays.fdpay.system.biz.PatternShortMessageBizImp">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="patternShortMessageDAO">
+			<ref bean="patternShortMessageDAO" />
+		</property>
+	</bean>
+
+	<bean id="patternShortMessageDAO"
+		class="com.fordays.fdpay.system.dao.PatternShortMessageDAOImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean name="/system/patternEmaillist"
+		class="com.fordays.fdpay.system.action.PatternEmailListAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="patternEmailBiz">
+			<ref bean="patternEmailBiz" />
+		</property>
+		<property name="agentBiz">
+			<ref bean="agentBiz" />
+		</property>
+	</bean>
+
+	<bean name="/system/patternEmail"
+		class="com.fordays.fdpay.system.action.PatternEmailAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="patternEmailBiz">
+			<ref bean="patternEmailBiz" />
+		</property>
+		<property name="agentBiz">
+			<ref bean="agentBiz" />
+		</property>
+	</bean>
+
+	<bean id="patternEmailBiz"
+		class="com.fordays.fdpay.system.biz.PatternEmailBizImp">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="patternEmailDAO">
+			<ref bean="patternEmailDAO" />
+		</property>
+		<property name="mailSender">
+			<ref bean="mailSender" />
+		</property>
+		<property name="agentBiz">
+			<ref bean="agentBiz" />
+		</property>
+
+	</bean>
+
+	<bean id="patternEmailDAO"
+		class="com.fordays.fdpay.system.dao.PatternEmailDAOImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean name="/system/sysloglist"
+		class="com.fordays.fdpay.system.action.SysLogAction" singleton="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="sysLogBiz">
+			<ref bean="sysLogBiz" />
+		</property>
+	</bean>
+
+	<bean name="/system/loginloglist"
+		class="com.fordays.fdpay.system.action.LoginLogListAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="loginlogBiz">
+			<ref bean="loginlogBiz" />
+		</property>
+	</bean>
+
+	<bean name="loginlogBiz"
+		class="com.fordays.fdpay.system.biz.LoginLogBizImpl" singleton="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="loginlogDao">
+			<ref bean="loginlogDao" />
+		</property>
+	</bean>
+	<bean id="sysLogBiz"
+		class="com.fordays.fdpay.system.biz.SysLogBizImp">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="sysLogDAO">
+			<ref bean="sysLogDAO" />
+		</property>
+	</bean>
+	<bean id="sysLogDAO"
+		class="com.fordays.fdpay.system.dao.SysLogDAOImp" lazy-init="default"
+		autowire="default" dependency-check="default">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+
+	<bean id="loginlogDao"
+		class="com.fordays.fdpay.system.dao.LoginLogDAOImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="/system/banklist"
+		class="com.fordays.fdpay.system.action.BankListAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="bankBiz">
+			<ref bean="bankBiz" />
+		</property>
+		<property name="provinceBiz">
+			<ref bean="provinceBiz" />
+		</property>
+		<property name="cityBiz">
+			<ref bean="cityBiz" />
+		</property>
+	</bean>
+	<bean name="/system/provincelist"
+		class="com.fordays.fdpay.system.action.ProvinceListAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="provinceBiz">
+			<ref bean="provinceBiz" />
+		</property>
+	</bean>
+	<bean name="/system/citylist"
+		class="com.fordays.fdpay.system.action.CityListAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="provinceBiz">
+			<ref bean="provinceBiz" />
+		</property>
+		<property name="cityBiz">
+			<ref bean="cityBiz" />
+		</property>
+	</bean>
+	<bean name="bankBiz"
+		class="com.fordays.fdpay.system.biz.BankBizImpl" singleton="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="bankDAO">
+			<ref bean="bankDAO" />
+		</property>
+	</bean>
+	<bean name="provinceBiz"
+		class="com.fordays.fdpay.system.biz.ProvinceBizImpl" singleton="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="provinceDAO">
+			<ref bean="provinceDAO" />
+		</property>
+	</bean>
+	<bean name="cityBiz"
+		class="com.fordays.fdpay.system.biz.CityBizImpl" singleton="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="cityDAO">
+			<ref bean="cityDAO" />
+		</property>
+	</bean>
+	<bean id="bankDAO"
+		class="com.fordays.fdpay.system.dao.BankDAOImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="provinceDAO"
+		class="com.fordays.fdpay.system.dao.ProvinceDAOImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="cityDAO"
+		class="com.fordays.fdpay.system.dao.CityDAOImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	
+	<bean name="tasktimestampBiz"
+		class="com.fordays.fdpay.system.biz.TaskTimestampBizImpl"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="tasktimestampDAO">
+			<ref bean="tasktimestampDAO" />
+		</property>
+	</bean>
+	
+	<bean name="tasktimestampDAO"
+		class="com.fordays.fdpay.system.dao.TaskTimestampDAOImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+</beans>

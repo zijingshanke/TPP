@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- [syncWithModel=true] -->
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-lazy-init="true">  
+
+  <bean id="Role_Entity" class="com.fordays.fdpay.right.Role" >
+    <property name="metaName_" value="orm/com/fordays/fdpay/right/Role.meta.xml" />
+  </bean>
+  
+  <bean id="RoleRight_Entity" class="com.fordays.fdpay.right.RoleRight" >
+    <property name="metaName_" value="orm/com/fordays/fdpay/right/RoleRight.meta.xml" />
+  </bean>
+  
+  <bean id="UserRoleRight_Entity" class="com.fordays.fdpay.right.UserRoleRight" >
+    <property name="metaName_" value="orm/com/fordays/fdpay/right/UserRoleRight.meta.xml" />
+  </bean>
+  
+
+</beans>

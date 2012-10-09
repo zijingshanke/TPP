@@ -1,0 +1,36 @@
+body {
+	background: url('../_img/admin_login_bg.gif');
+}
+#adminLoginContainer {
+	width: 570px;
+	height: 320px;
+	margin: 51px auto;
+	position: relative;
+	background: url('../_img/admin_login_panel_bg.gif') no-repeat;
+}
+#adminLoginContainer input, #adminLoginContainer img {
+	vertical-align: middle;
+}
+
+#adminLoginContainer .loginPanel {
+	position: absolute;
+	width: 250px;
+	height: 160px;
+	top: 110px;
+	right: 50px;
+}
+#adminLoginContainer .btnArea {
+	text-align: center;
+}
+#adminLoginContainer .vcode {
+	width: 50px;
+	margin-right: 5px;
+}
+
+.button1 {
+	width:70px;
+	height:24px;
+	margin: 0 5px;
+	border: 0;
+	background:url('../_img/button.gif') no-repeat;
+}

@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-lazy-init="false" default-autowire="no"
+	default-dependency-check="none">
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<!--  oracle 10g  -->
+		<property name="driverClassName">
+			<value>${driverClassName}</value>
+		</property>
+		<property name="url">
+			<value>${url}</value><!-- 61.142.73.73 -->
+		</property>
+		<property name="username">
+			<value>${username}</value>
+		</property>
+		<property name="password">
+			<value>${password}</value>
+		</property>
+		<property name="maxActive">
+			<value>${maxActive}</value>
+		</property>
+		<property name="maxIdle">
+			<value>${maxActive}</value>
+		</property>
+		<property name="maxWait">
+			<value>${maxActive}</value>
+		</property>
+		<property name="defaultAutoCommit">
+			<value>${defaultAutoCommit}</value>
+		</property>
+		<property name="removeAbandoned">
+			<value>${removeAbandoned}</value>
+		</property>
+		<property name="removeAbandonedTimeout">
+			<value>${removeAbandonedTimeout}</value>
+		</property>
+		<property name="logAbandoned">
+			<value>${logAbandoned}</value>
+		</property>
+		<property name="validationQuery">
+			<value>${validationQuery}</value>
+		</property>
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="dataSource">
+			<ref local="dataSource" />
+		</property>
+		<property name="lobHandler" ref="lobHandler" />
+
+
+		<property name="mappingLocations">
+			<list>
+				<value>
+					classpath*:_config/hbm/com/fordays/fdpay/**/*.hbm.xml
+				</value>
+			</list>
+		</property>
+
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.OracleDialect
+				</prop>
+
+				<prop key="hibernate.connection.release_mode">
+					auto
+				</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.cache.provider_class">
+					net.sf.ehcache.hibernate.EhCacheProvider
+				</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.jdbc.fetch_size">10</prop>
+				<prop key="hibernate.query.factory_class">
+					org.hibernate.hql.ast.ASTQueryTranslatorFactory
+				</prop>
+
+			</props>
+		</property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+
+	<bean id="hibernateTemplate"
+		class="org.springframework.orm.hibernate3.HibernateTemplate"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="sessionFactory" ref="sessionFactory" />
+
+		<property name="fetchSize" value="20" />
+		<property name="cacheQueries">
+			<value>true</value>
+		</property>
+	</bean>
+	<bean id="lobHandler"
+		class="org.springframework.jdbc.support.lob.DefaultLobHandler"
+		lazy-init="true" />
+
+	<!-- 
+		<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"> 
+		<property name="configLocation"> 
+		<value>/WEB-INF/ehcache.xml</value> 
+		</property> 
+		</bean>
+	-->
+	
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:fdpay.properties" />
+	</bean>
+	 
+	<!--  <context:property-placeholder location="classpath:fdpay.properties"></context:property-placeholder> -->
+	 
+	<bean id="transactionInterceptor"
+		class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="bizAOP"
+		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames">
+			<list>
+				<value>*Biz</value>
+			</list>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>transactionInterceptor</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="actionAdvice"
+		class="com.fordays.fdpay.right.ActionAdvice">
+	</bean>
+
+	<bean id="actionsor"
+		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+		<property name="advice">
+			<ref bean="actionAdvice" />
+		</property>
+		<property name="patterns">
+			<list>
+				<value>list</value>
+				<value>edit</value>
+			</list>
+		</property>
+	</bean>
+
+
+
+	<bean
+		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="proxyTargetClass" value="true" />
+		<property name="beanNames">
+			<list>
+				<value>/usefffr/useffrlist.do</value>
+			</list>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>actionsor</value>
+			</list>
+		</property>
+	</bean>
+
+	<import resource="applicationContext-base.xml" />
+	<import resource="applicationContext-agent.xml" />
+	<import resource="applicationContext-system.xml" ></import>
+	<import resource="applicationContext-right.xml" ></import>
+	<import resource="applicationContext-sysUser.xml" />
+	<import resource="applicationContext-sysConfig.xml" />
+	<import resource="applicationContext-security.xml" />
+	<import resource="applicationContext-transaction.xml" />
+	<import resource="applicationContext-transactionStatus.xml" />
+	<import resource="applicationContext-bank.xml" />
+	<import resource="applicationContext-information.xml" />
+	<import resource="applicationContext-cooperate.xml" />
+	<import resource="applicationContext-security.xml" />
+	<import resource="applicationContext-watch.xml" />
+	
+
+</beans>

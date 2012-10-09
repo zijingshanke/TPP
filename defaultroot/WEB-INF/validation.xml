@@ -1,0 +1,105 @@
+<!DOCTYPE form-validation PUBLIC "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.0//EN" "http://jakarta.apache.org/commons/dtds/validator_1_0.dtd">
+<form-validation>
+  <global>
+    <constant>
+      <constant-name>phone</constant-name>
+      <constant-value>^\(?(\d{3})\)?[-| ]?(\d{3})[-| ]?(\d{4})$</constant-value>
+    </constant>
+    <constant>
+      <constant-name>mtel</constant-name>
+      <constant-value>^\d{11}$</constant-value>
+    </constant>
+    <constant>
+      <constant-name>zip</constant-name>
+      <constant-value>^\d{6}\d*$</constant-value>
+    </constant>
+    <constant>
+      <constant-name>sid</constant-name>
+      <constant-value>^(\d{17}[\dxX])|(\d{15}|(\d{18})$</constant-value>
+    </constant>
+    <constant>
+      <constant-name>email</constant-name>
+      <constant-value>\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*</constant-value>
+    </constant>
+    <constant>
+      <constant-name>date</constant-name>
+      <constant-value>^(\d{4})-(\d{2})-(\d{2})$</constant-value>
+    </constant>
+  </global>
+  <formset>
+    <form name="userForm">
+      <field property="userName" depends="required">
+        <arg0 key="sunes.user.name" />
+      </field>
+  <!--    <field property="userMTel" depends="required">
+        <arg0 key="sunes.user.mtel" />
+      </field>
+  -->    
+	  <field property="userSex" depends="required">
+        <arg0 key="sunes.user.sex" />
+      </field>
+  <!--    <field property="userEmail" depends="required,mask">
+        <arg0 key="sunes.user.email" />
+        <var>
+          <var-name>mask</var-name>
+          <var-value>${email}</var-value>
+        </var>
+      </field>
+  -->    
+      <field property="userNo" depends="required">
+        <arg0 key="sunes.user.no" />
+      </field>
+    </form>
+    <form name="customerForm">
+      <field property="customerName" depends="required,minlength">
+        <arg0 key="sunes.customer.name" />
+        <arg1 name="minlength" key="${var:minlength}" resource="false" />
+        <var>
+          <var-name>minlength</var-name>
+          <var-value>2</var-value>
+        </var>
+      </field>
+      <field property="customerNo" depends="required">
+        <arg0 key="sunes.customer.no" />
+      </field>
+      <field property="customerCode" depends="required">
+        <arg0 key="sunes.customer.code" />
+      </field>
+    <field property="customerSID" depends="mask">
+	      <arg0 key="sunes.customer.sid" />
+	      <var>
+	        <var-name>mask</var-name>
+	        <var-value>${sid}</var-value>
+	      </var>
+	    </field>
+    </form>
+    <form name="accountForm">
+      <field property="accountSum" depends="required,mask">
+        <arg0 key="sunes.account.sum" />
+          <var>
+	        <var-name>mask</var-name>
+	        <var-value>^(\d+).(\d{2})$</var-value>
+	     </var>
+      </field>
+    </form>  
+    <form name="promoTicketForm">
+  <!--    <field property="promoTitle" depends="required">
+        <arg0 key="sunes.ticket.promo.title" />
+      </field>
+	  -->
+      <field property="promoCode" depends="required">
+        <arg0 key="sunes.ticket.promo.code" />
+      </field>
+      <field property="startCityCode" depends="required">
+        <arg0 key="sunes.ticket.promo.start.city.code" />
+      </field>
+      <field property="endCityCode" depends="required">
+        <arg0 key="sunes.ticket.promo.end.city.code" />
+      </field>
+   <!--  <field property="promoTictetPrice" depends="required">
+        <arg0 key="sunes.ticket.promo.ticket.price" />
+      </field>
+    -->
+    </form>  
+  </formset>
+</form-validation>

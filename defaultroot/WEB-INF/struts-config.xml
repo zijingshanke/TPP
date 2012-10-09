@@ -1,0 +1,34 @@
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by ccggyy2002 (Delphi) -->
+
+<struts-config>
+	<form-beans>
+
+	</form-beans>
+
+	<global-forwards>
+		<forward name="index" path="/index.jsp" />
+		<forward name="login" path="/login.jsp" />
+		<forward name="exit" path="/page/exit.jsp" />
+		<forward name="inform" path="/page/inform.jsp" />
+		<forward name="valid" path="/page/valid.jsp" />
+		<forward name="invalid" path="/page/validRight.jsp" />
+	</global-forwards>
+	<controller contentType="text/html;charset=utf-8"
+		processorClass="com.fordays.fdpay.base.SessionTimeOutProcessor"
+		nocache="true" locale="true">
+		
+	</controller>
+
+	<!--		
+		<message-resources null="false" parameter="ApplicationResources" />
+		<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml" property="pathnames" />
+		</plug-in>
+		
+		<plug-in
+		className="org.springframework.web.struts.ContextLoaderPlugIn">
+		<set-property property="contextConfigLocation"
+		value="/WEB-INF/applicationContext.xml" />
+		</plug-in>-->
+</struts-config>

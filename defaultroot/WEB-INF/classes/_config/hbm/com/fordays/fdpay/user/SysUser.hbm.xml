@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- [syncWithModel=true] -->
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	
+<hibernate-mapping >
+
+<class 
+  name="com.fordays.fdpay.user.SysUser"
+	table="sys_user"
+>
+
+<meta attribute="extends">org.apache.struts.action.ActionForm implements Cloneable</meta>
+<meta attribute="class-code"><![CDATA[
+  public Object clone()
+  {
+    Object o = null;
+    try
+    {
+      o = super.clone();
+    }
+    catch (CloneNotSupportedException e)
+    {
+      e.printStackTrace();
+    }
+    return o;
+}
+
+private String thisAction="";
+ public String getThisAction()
+ {
+     return thisAction;
+ }
+
+
+public void setThisAction(String thisAction)
+ {
+     this.thisAction=thisAction;
+ }
+
+private int index=0;
+ public int getIndex()
+ {
+     return index;
+ }
+
+
+public void setIndex(int index)
+ {
+     this.index=index;
+ }
+ 
+
+
+
+
+]]></meta>
+
+
+    <id
+        name="userId"
+        type="long"
+        column="user_id"
+    >
+        <generator class="sequence" >
+          <param  name="sequence">seq_sysuser</param>
+          </generator>
+    </id>
+
+    <property
+        name="userName"
+        column="user_name"
+        type="string"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="userNo"
+        column="user_no"
+        type="string"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="userPassword"
+        column="user_password"
+        type="string"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="userStatus"
+        column="user_status"
+        type="java.lang.Long"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="userType"
+        column="user_type"
+        type="java.lang.Long"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="userEmail"
+        column="user_email"
+        type="string"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+    <property
+        name="serialNumber"
+        column="serial_number"
+        type="string"
+        not-null="false"
+        insert="true" update="true"
+    >
+	</property>
+
+
+
+  	<set
+      name="sysLogs"
+      inverse="true"
+  	  cascade="all-delete-orphan"
+      >
+          <key>
+  		        <column name="user_id" />
+          </key>
+          <one-to-many 
+              class="com.fordays.fdpay.system.SysLog"
+          />
+    </set>
+  	<set
+      name="draws"
+      inverse="true"
+  	  cascade="all-delete-orphan"
+      >
+          <key>
+  		        <column name="user_id" />
+          </key>
+          <one-to-many 
+              class="com.fordays.fdpay.transaction.Draw"
+          />
+    </set>
+  	<set
+      name="drawLogs"
+      inverse="true"
+  	  cascade="all-delete-orphan"
+      >
+          <key>
+  		        <column name="user_id" />
+          </key>
+          <one-to-many 
+              class="com.fordays.fdpay.transaction.DrawLog"
+          />
+    </set>
+  	<set
+      name="charges"
+      inverse="true"
+  	  cascade="all-delete-orphan"
+      >
+          <key>
+  		        <column name="user_id" />
+          </key>
+          <one-to-many 
+              class="com.fordays.fdpay.transaction.Charge"
+          />
+    </set>
+</class>
+
+</hibernate-mapping>

@@ -1,0 +1,347 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>js调用日期</title>
+</head>
+<SCRIPT language=Javascript>
+
+<!--
+
+//========================================================================================================================
+
+document.writeln ('<div id=DayShow style="position:absolute;width:142;height:166;top:68;left:1;z-index:99;display:none">');
+
+document.writeln ('<table border=0 cellspacing=1 cellpadding=0 width=142 height=160 bgcolor=#808080 style="font-size:12px">');
+
+document.writeln ('<tr><td width=142 height=22 bgcolor=#FFFFFF><table border=0 cellspacing=1 cellpadding=0 width=140 height=22>');
+
+document.writeln ('<tr align=center><td width=25 align=left bgcolor=#808080 style="font-size:12px;cursor: hand" onclick=prev()>');
+
+document.writeln ('<span style="color: #FFD700"><b>←</b></span>');
+
+document.writeln ('</td><td width=90><span style="font-size:12px;cursor:default" id=thehead></span></td>');
+
+document.writeln ('<td width=25 bgcolor=#808080 align=right style="font-size:12px;cursor: hand" onclick=next()>');
+
+document.writeln ('<span style="color: #FFD700">→</span></td></tr>');
+
+document.writeln ('</table></td></tr><tr><td width=142 height=18 bgcolor=#808080>');
+
+document.writeln ('<table border=0 cellspacing=0 cellpadding=0 width=140 height=1 style="cursor:default">');
+
+document.writeln ('<tr align=center><td style="font-size:12px;color:#FFFFFF">日</td>');
+
+document.writeln ('<td style="font-size:12px;color:#FFFFFF">一</td><td style="font-size:12px;color:#FFFFFF">二</td>');
+
+document.writeln ('<td style="font-size:12px;color:#FFFFFF">三</td><td style="font-size:12px;color:#FFFFFF">四</td>');
+
+document.writeln ('<td style="font-size:12px;color:#FFFFFF">五</td><td style="font-size:12px;color:#FFFFFF">六</td></tr>');
+
+document.writeln ('</table></td></tr><tr><td width=142 height=120><!--Author:F.R.Huang(meizz)-->');
+
+document.writeln ('<table border=0 cellspacing=1 cellpadding=0 width=140 height=120 bgcolor=#FFFFFF>');
+
+var n=0; for (j=0;j<5;j++){ document.writeln ('<tr align=center>');for (i=0;i<7;i++){
+
+document.writeln ('<td width=20 height=20 id=D'+n+' style="font-size:12px" onclick=DayClick(this.innerText)></td>'); n++;}
+
+document.writeln ('</tr>');}
+
+document.writeln ('<tr align=center><td width=20 height=20 style="font-size:12px" id=D35 onclick=DayClick(this.innerText)></td>');
+
+document.writeln ('<td width=20 height=20 style="font-size:12px" id=D36 onclick=DayClick(this.innerText)></td>');
+
+document.writeln ('<td colspan=5 align=right><span onclick=closelayer() style="font-size:12px;cursor: hand"');
+
+document.writeln ('><u>关闭</u></span> </td></tr></table></td></tr></table></div>');
+
+//=============================================================================================
+
+
+
+var TObject;
+
+function setday(tt,obj){
+
+  var dads  = document.all.DayShow.style;
+
+  var ttop  = tt.offsetTop - 60;     //TT控件的定位点高
+
+  var thei  = tt.clientHeight;  //TT控件本身的高
+
+  var tleft = tt.offsetLeft + 20;    //TT控件的定位点宽
+
+  var ttyp  = tt.type;          //TT控件的类型
+
+  while (tt = tt.offsetParent){ttop+=tt.offsetTop; tleft+=tt.offsetLeft;}
+
+  dads.top  = (ttyp=="image")? ttop+thei : ttop+thei+6;
+
+  dads.left = tleft;    dads.display = '';
+
+  TObject   = obj;      event.returnValue=false;
+
+  }
+
+var MonHead=new Array(12);MonHead[0]=31;MonHead[1]=28;MonHead[2]=31;MonHead[3]=30;MonHead[4]=31;MonHead[5]=30;
+
+    		MonHead[6]=31;MonHead[7]=31;MonHead[8]=30;MonHead[9]=31;MonHead[10]=30;MonHead[11]=31;
+
+    		//定义阳历中每个月的最大天数
+
+var TheYear=new Date().getFullYear();     //定义年的变量的初始值
+
+var TheMonth=new Date().getMonth()+1;     //定义月的变量的初始值
+
+var wday=new Array(37);
+
+document.all.thehead.innerText=TheYear+" 年 "+TheMonth+" 月"      //往 thehead 中写入当前的年与月
+
+function closelayer(){document.all.DayShow.style.display="none";} //这个层的关闭
+
+function cennalclose(){if(window.event.keyCode==27)document.all.DayShow.style.display="none";}
+
+function IsPinYear(year){ if(0==year%4&&((year%100!=0)||(year%400==0))) return true;else return false;} //判断是否闰平年
+
+function GetMonthCount(year,month){var c=MonHead[month-1];if((month==2)&&IsPinYear(year)) c++;return c;} //闰年二月为29日
+
+function GetDOW(day,month,year){var dt=new Date(year,month-1,day).getDay()/7; return dt;}    //求某天的星期几
+
+function prev(){if(TheMonth>1){TheMonth--}else{TheYear--;TheMonth=12;}  
+
+  document.all.thehead.innerText=TheYear+" 年 "+TheMonth+" 月";SetD(TheYear,TheMonth);       //往前翻日期
+
+  }
+
+function next(){if(TheMonth==12){TheYear++;TheMonth=1}else{TheMonth++}
+
+  document.all.thehead.innerText=TheYear+" 年 "+TheMonth+" 月"; SetD(TheYear,TheMonth);      //往后翻日期
+
+  }
+
+function SetD(yy,mm){
+
+ for (i=0;i<37;i++){wday[i]=""};  //将显示框的内容全部清空
+
+ var day1=1,firstday=new Date(yy,mm-1,1).getDay()  //某月第一天的星期几
+
+ for (i=firstday;day1<GetMonthCount(yy,mm)+1;i++){wday[i]=day1;day1++;};
+
+ for (i=0;i<37;i++){ var da = eval("document.all.D"+i)  //书写新的一个月的日期星期排列
+ 
+	var C_Date=new Date();
+	C_Year=C_Date.getYear();
+	C_Month=C_Date.getMonth()+1;
+	C_Day=C_Date.getDate();
+	C_CDate=C_Year+"-"+C_Month+"-"+C_Day;
+	
+	M_Year=yy;
+	M_Month=mm;
+	M_Day=wday[i];
+	M_CDate=M_Year+"-"+M_Month+"-"+M_Day;
+	
+ 	if (wday[i]!="")
+	{
+	da.innerHTML=wday[i];
+//	da.innerHTML=M_CDate;
+//	da.innerHTML=C_CDate;
+	if (C_CDate==M_CDate){
+	da.style.backgroundColor="#ff9a31";
+	}else{
+	da.style.backgroundColor="#DAE3FC";
+	}
+	
+	da.style.cursor="hand"}
+ 	else{
+	da.innerHTML="";
+	da.style.backgroundColor="";
+	da.style.cursor="default"
+	}}
+
+ }
+
+function DayClick(n){  //点击显示框选取日期
+
+ var t1=TheYear;var t2=TheMonth;
+
+ if (t2<10){t2=""+t2;}
+
+ if (n<10){n=""+n;}
+
+ if (n!=""){TObject.value=t1+"-"+t2+"-"+n;document.all.DayShow.style.display='none';}
+
+ else{TObject.value=""}
+
+ }
+
+SetD(TheYear,TheMonth)
+
+document.onkeydown=cennalclose
+
+// -->
+
+</SCRIPT>
+<body>
+<SCRIPT language=JavaScript>
+<!--
+
+	function VerifyInput()
+	{
+
+		start_time=document.HOTELGDS.start_time.value;
+		end_time=document.HOTELGDS.end_time.value;
+		if (start_time=="" || end_time=="")
+		{
+			alert("请填写入住日期或者离店日期");
+			document.HOTELGDS.start_time.focus();
+			return false;
+		}
+
+		hotel_city2=document.HOTELGDS.hotel_city2.value;
+		if (hotel_city2=="")
+		{
+			alert("请填写城市（拼音或中文）");
+			document.HOTELGDS.hotel_city2.focus();
+			return false;
+		}
+
+
+	}
+//-->
+</SCRIPT>
+<SCRIPT language=JavaScript src="calendar.js"></SCRIPT>
+<table width="90%" height="356"  border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="130">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>
+	<TABLE cellSpacing=0 cellPadding=0 width="96%" 
+                        align=center border=0>
+      <FORM name=HOTELGDS onsubmit="return VerifyInput();" 
+                          action=hotel_proc.asp method=post>
+        <TBODY>
+          <TR>
+            <TD width=1 height=22>&nbsp;</TD>
+            <TD width=1 height=22>&nbsp;</TD>
+            <TD colSpan=2>城市(中文/拼音)</TD>
+            <TD width=1>&nbsp;</TD>
+            <TD colSpan=2>入住日期</TD>
+            <TD width=1>&nbsp;</TD>
+            <TD colSpan=3>离店日期</TD>
+          </TR>
+          <TR>
+            <TD width=1 height=42>&nbsp;</TD>
+            <TD width=1 height=42>&nbsp;</TD>
+            <TD vAlign=top colSpan=2><INPUT class=small 
+                              size=13 name=hotel_city2>
+                <INPUT type=hidden 
+                              value=1 name=Form_Page>
+                <!-- 来自首页的提交 --></TD>
+            <TD width=1>&nbsp;</TD>
+            <TD vAlign=top colSpan=2><INPUT class=small 
+                              id=start_time size=10 name=start_time onClick=javascript:showCalendar('newcalendar1',false,'CheckInDate','newcalendar2','CheckOutDate','2004-12-01','2006-12-30','','','')>
+                <A 
+                              onclick=event.cancelBubble=true; 
+                              href="javascript:showCalendar('imageCalendar2',false,'start_time',null);"><IMG 
+                              id=imageCalendar2 height=18 
+                              src="cc0000_calendar.gif" 
+                              width=18 border=0></A> &nbsp; </TD>
+            <TD width=1>&nbsp;</TD>
+            <TD vAlign=top colSpan=3><INPUT class=small 
+                              id=end_time size=10 name=end_time>
+                <A 
+                              onclick=event.cancelBubble=true; 
+                              href="javascript:showCalendar('imageCalendar2',false,'end_time','start_time');"><IMG 
+                              id=imageCalendar2 height=18 
+                              src="cc0000_calendar.gif" 
+                              width=18 border=0></A> </TD>
+          </TR>
+          <TR>
+            <TD width=1 height=18>&nbsp;</TD>
+            <TD width=1 height=18>&nbsp;</TD>
+            <TD colSpan=2>酒店星级</TD>
+            <TD width=1>&nbsp;</TD>
+            <TD colSpan=2>价格范围</TD>
+            <TD width=1>&nbsp;</TD>
+            <TD colSpan=3>酒店名称(中文/拼音)</TD>
+          </TR>
+          <TR>
+            <TD width=1 height=32 rowSpan=2>&nbsp;</TD>
+            <TD width=1 height=32 rowSpan=2>&nbsp;</TD>
+            <TD colSpan=2><SELECT style="WIDTH: 92px" 
+                              name=hotel_star>
+                <OPTION value=" " 
+                                selected>所有</OPTION>
+                <OPTION value=1>一星</OPTION>
+                <OPTION value=2>二星</OPTION>
+                <OPTION 
+                                value=3>三星</OPTION>
+                <OPTION value=4>四星</OPTION>
+                <OPTION value=5>五星</OPTION>
+              </SELECT>
+            </TD>
+            <TD width=1>&nbsp;</TD>
+            <TD colSpan=2><SELECT class=small 
+                                name=Hotel_Money>
+                <OPTION value=06 
+                                selected>不限</OPTION>
+                <OPTION value=01>RMB 250以下</OPTION>
+                <OPTION value=02>RMB 250-400</OPTION>
+                <OPTION value=03>RMB 400-600</OPTION>
+                <OPTION value=04>RMB 600-800</OPTION>
+                <OPTION value=05>RMB 800以上</OPTION>
+              </SELECT>
+            </TD>
+            <TD width=1 height=8>&nbsp;</TD>
+            <TD colSpan=3><INPUT class=small size=16 
+                              name=hotelmain_name>
+            </TD>
+          </TR>
+          <TR>
+            <TD vAlign=bottom align=middle width=107 
+                              height=28>&nbsp;</TD>
+            <TD vAlign=bottom colSpan=4 height=28>&nbsp;</TD>
+            <TD vAlign=bottom align=middle colSpan=6 
+                              height=35>&nbsp;</TD>
+            <TD width=1 
+                        height=28>&nbsp;</TD>
+          </TR>
+      </FORM>
+    </TABLE></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<SCRIPT language=JavaScript>
+<!--
+
+	function VerifyInput()
+	{
+
+		start_time=document.HOTELGDS.start_time.value;
+		end_time=document.HOTELGDS.end_time.value;
+		if (start_time=="" || end_time=="")
+		{
+			alert("请填写入住日期或者离店日期");
+			document.HOTELGDS.start_time.focus();
+			return false;
+		}
+
+		hotel_city2=document.HOTELGDS.hotel_city2.value;
+		if (hotel_city2=="")
+		{
+			alert("请填写城市（拼音或中文）");
+			document.HOTELGDS.hotel_city2.focus();
+			return false;
+		}
+
+
+	}
+//-->
+</SCRIPT>
+</body>
+</html>

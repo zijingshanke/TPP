@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-lazy-init="false" default-autowire="no"
+	default-dependency-check="none">
+
+
+
+	<bean name="/right/rolelist"
+		class="com.fordays.fdpay.right.action.RoleListAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+
+	</bean>
+
+	<bean name="/right/role"
+		class="com.fordays.fdpay.right.action.RoleAction" singleton="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+
+	</bean>
+
+	<bean name="/right/roleright"
+		class="com.fordays.fdpay.right.action.RoleRightAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+	</bean>
+	<bean id="rightBiz"
+		class="com.fordays.fdpay.right.biz.RightBizImpl">
+		<property name="rightDAO">
+			<ref bean="rightDAO" />
+		</property>
+	</bean>
+
+	<bean id="rightDAO"
+		class="com.fordays.fdpay.right.dao.RightDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="baseRightInfo" class="com.neza.base.BaseRightInfo">
+		<property name="list">
+			<list>
+				<value>agent*.b</value>
+				<value>user*.a</value>
+				<value>transaction*.c</value>
+				<value>system*.d</value>
+				<value>system*.a</value>
+			</list>
+		</property>
+	</bean>
+
+</beans>

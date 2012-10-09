@@ -1,0 +1,102 @@
+.OkMsg {
+	BORDER-RIGHT: #00be00 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #00be00 1px solid; PADDING-LEFT: 25px; BACKGROUND: url(../_img/standard_msg_ok.gif) #e6ffe6 no-repeat 5px 5px; PADDING-BOTTOM: 5px; BORDER-LEFT: #00be00 1px solid; COLOR: #000; PADDING-TOP: 5px; BORDER-BOTTOM: #00be00 1px solid; HEIGHT: 18px
+}
+.WarningMsg {
+	BORDER-RIGHT: #00a8ff 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #00a8ff 1px solid; PADDING-LEFT: 25px; BACKGROUND: url(../_img/standard_msg_warning.gif) #e2f5ff no-repeat 5px 5px; PADDING-BOTTOM: 5px; BORDER-LEFT: #00a8ff 1px solid; COLOR: #000; PADDING-TOP: 5px; BORDER-BOTTOM: #00a8ff 1px solid; HEIGHT: 18px
+}
+.ErrorMsg {
+	BORDER-RIGHT: #f60 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #f60 1px solid; PADDING-LEFT: 25px; BACKGROUND: url(../_img/standard_msg_error.gif) #fff2e9 no-repeat 5px 5px; PADDING-BOTTOM: 5px; BORDER-LEFT: #f60 1px solid; COLOR: #000; PADDING-TOP: 5px; BORDER-BOTTOM: #f60 1px solid; HEIGHT: 18px
+}
+BODY {
+	SCROLLBAR-FACE-COLOR: #eeeeee; FONT-SIZE: 12px; SCROLLBAR-HIGHLIGHT-COLOR: #ffffff; SCROLLBAR-SHADOW-COLOR: #ffffff; COLOR: #333333; SCROLLBAR-ARROW-COLOR: #c4c8d2; scrollbar-3d-light-color: #ffffff; scrollbar-dark-shadow-color: #ffffff
+}
+TD {
+	FONT-SIZE: 12px; COLOR: #333333; WORD-BREAK: break-all
+}
+LEGEND {
+	PADDING-RIGHT: 7px; PADDING-LEFT: 7px; FONT-SIZE: 12px; COLOR: #333333
+}
+FIELDSET {
+	BORDER-RIGHT: #999999 1px solid; BORDER-TOP: #999999 1px solid; BORDER-LEFT: #999999 1px solid; WIDTH: 98%; BORDER-BOTTOM: #999999 1px solid
+}
+.line-0010-bbbbbb {
+	BORDER-RIGHT: #bbbbbb 0px solid; BORDER-TOP: #bbbbbb 0px solid; BORDER-LEFT: #bbbbbb 0px solid; BORDER-BOTTOM: #bbbbbb 1px solid
+}
+INPUT {
+	BORDER-RIGHT: #999999 1px solid; BORDER-TOP: #999999 1px solid; BORDER-LEFT: #999999 1px solid; BORDER-BOTTOM: #999999 1px solid
+}
+TEXTAREA {
+	BORDER-RIGHT: #999999 1px solid; BORDER-TOP: #999999 1px solid; BORDER-LEFT: #999999 1px solid; BORDER-BOTTOM: #999999 1px solid
+}
+.stat-column {
+	BORDER-RIGHT: #999999 1px solid; BORDER-TOP: #666666 1px solid; FONT-SIZE: 10px; BORDER-LEFT: #666666 1px solid; COLOR: #000000; BORDER-BOTTOM: #999999 1px solid; FONT-FAMILY: "Geneva", "Arial", "Helvetica", "sans-serif"; BACKGROUND-COLOR: #eeeeee
+}
+.left-title {
+	BORDER-RIGHT: #bbbbbb 1px solid; BORDER-TOP: #bbbbbb 1px solid; BORDER-LEFT: #bbbbbb 1px solid; BORDER-BOTTOM: #bbbbbb 1px solid; HEIGHT: 30px; BACKGROUND-COLOR: #e5e5e5
+}
+.right-title {
+	BORDER-RIGHT: #bbbbbb 1px solid; BORDER-TOP: #bbbbbb 1px solid; BORDER-LEFT: #bbbbbb 0px solid; BORDER-BOTTOM: #bbbbbb 1px solid; HEIGHT: 30px; BACKGROUND-COLOR: #e5e5e5
+}
+.right-special-title {
+	BORDER-RIGHT: #bbbbbb 1px solid; BORDER-TOP: #bbbbbb 1px solid; FONT-WEIGHT: bold; BORDER-LEFT: #bbbbbb 0px solid; BORDER-BOTTOM: #bbbbbb 1px solid; HEIGHT: 30px; BACKGROUND-COLOR: #c5c5c5
+}
+.page-title {
+	BORDER-RIGHT: #bbbbbb 0px solid; BORDER-TOP: #bbbbbb 0px solid; FONT-WEIGHT: bold; FONT-SIZE: 13px; BORDER-LEFT: #bbbbbb 0px solid; BORDER-BOTTOM: #bbbbbb 1px solid
+}
+A.table-title:link {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+A.table-title:visited {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+A.table-title:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+A.table-title:active {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+.row-line1 {
+	BORDER-RIGHT: #dddddd 0px solid; BORDER-TOP: #dddddd 0px solid; BORDER-LEFT: #dddddd 0px solid; BORDER-BOTTOM: #dddddd 1px solid; BACKGROUND-COLOR: #ffffff
+}
+.row-special-line1 {
+	BORDER-RIGHT: #dddddd 0px solid; BORDER-TOP: #dddddd 0px solid; FONT-WEIGHT: bold; BORDER-LEFT: #dddddd 0px solid; BORDER-BOTTOM: #dddddd 1px solid; BACKGROUND-COLOR: #f0f0f0
+}
+.row-line2 {
+	BORDER-RIGHT: #dddddd 0px solid; BORDER-TOP: #dddddd 0px solid; BORDER-LEFT: #dddddd 0px solid; BORDER-BOTTOM: #dddddd 1px solid; BACKGROUND-COLOR: #f9f9f9
+}
+.row-special-line2 {
+	BORDER-RIGHT: #dddddd 0px solid; BORDER-TOP: #dddddd 0px solid; FONT-WEIGHT: bold; BORDER-LEFT: #dddddd 0px solid; BORDER-BOTTOM: #dddddd 1px solid; BACKGROUND-COLOR: #e5e5e5
+}
+.row-line-on {
+	BORDER-RIGHT: #dddddd 0px solid; BORDER-TOP: #dddddd 0px solid; BORDER-LEFT: #dddddd 0px solid; BORDER-BOTTOM: #dddddd 1px solid; BACKGROUND-COLOR: #d3eb9a
+}
+.turn-page-table {
+	BORDER-RIGHT: #bbbbbb 1px solid; BORDER-TOP: #bbbbbb 1px solid; BORDER-LEFT: #bbbbbb 1px solid; BORDER-BOTTOM: #bbbbbb 1px solid; BACKGROUND-COLOR: #e5e5e5
+}
+.short-button {
+	BORDER-RIGHT: 0px solid; BACKGROUND-POSITION: center center; BORDER-TOP: 0px solid; BACKGROUND-ATTACHMENT: fixed; BACKGROUND-IMAGE: url(_img/button_short.gif); BORDER-LEFT: 0px solid; WIDTH: 70px; COLOR: #000000; PADDING-TOP: 2px; BORDER-BOTTOM: 0px solid; BACKGROUND-REPEAT: no-repeat; HEIGHT: 20px
+}
+.long-button {
+	BORDER-RIGHT: 0px solid; BACKGROUND-POSITION: center center; BORDER-TOP: 0px solid; BACKGROUND-ATTACHMENT: fixed; BACKGROUND-IMAGE: url(_img/button_long.gif); BORDER-LEFT: 0px solid; WIDTH: 95px; COLOR: #000000; PADDING-TOP: 2px; BORDER-BOTTOM: 0px solid; BACKGROUND-REPEAT: no-repeat; HEIGHT: 20px
+}
+.long-long-button {
+	BORDER-RIGHT: 0px solid; BACKGROUND-POSITION: center center; BORDER-TOP: 0px solid; BACKGROUND-ATTACHMENT: fixed; BACKGROUND-IMAGE: url(_img/button_long_long.gif); BORDER-LEFT: 0px solid; WIDTH: 130px; COLOR: #000000; PADDING-TOP: 2px; BORDER-BOTTOM: 0px solid; BACKGROUND-REPEAT: no-repeat; HEIGHT: 20px
+}
+.page-go {
+	BORDER-RIGHT: 0px solid; BACKGROUND-POSITION: center center; BORDER-TOP: 0px solid; FONT-WEIGHT: bold; FONT-SIZE: 11px; BACKGROUND-ATTACHMENT: fixed; BACKGROUND-IMAGE: url(_img/page_go.gif); BORDER-LEFT: 0px solid; WIDTH: 28px; COLOR: #000000; BORDER-BOTTOM: 0px solid; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: Arial, Helvetica, sans-serif; HEIGHT: 20px
+}
+A.in-table:link {
+	COLOR: #333333; TEXT-DECORATION: underline
+}
+A.in-table:visited {
+	COLOR: #333333; TEXT-DECORATION: underline
+}
+A.in-table:hover {
+	COLOR: #333333; TEXT-DECORATION: underline
+}
+A.in-table:active {
+	COLOR: #333333; TEXT-DECORATION: underline
+}
+FORM {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}

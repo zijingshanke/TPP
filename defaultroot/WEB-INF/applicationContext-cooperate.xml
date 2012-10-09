@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-lazy-init="false" default-autowire="no"
+	default-dependency-check="none">
+
+	<bean name="/cooperate/actionLoglist"
+		class="com.fordays.fdpay.cooperate.action.ActionLogListAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="actionLogBiz">
+			<ref bean="actionLogBiz" />
+		</property>
+	</bean>
+	
+	<bean id="actionLogBiz"
+		class="com.fordays.fdpay.cooperate.biz.ActionLogBizImpl">
+		<property name="actionLogDAO">
+			<ref bean="actionLogDAO" />
+		</property>
+	</bean>
+	<bean id="actionLogDAO" class="com.fordays.fdpay.cooperate.dao.ActionLogDAOImpl"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+</beans>

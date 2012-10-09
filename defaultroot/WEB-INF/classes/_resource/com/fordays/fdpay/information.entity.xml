@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- [syncWithModel=true] -->
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-lazy-init="true">  
+
+  <bean id="News_Entity" class="com.fordays.fdpay.information.News" >
+    <property name="metaName_" value="orm/com/fordays/fdpay/information/News.meta.xml" />
+  </bean>
+  
+
+</beans>

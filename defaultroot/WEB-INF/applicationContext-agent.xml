@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-lazy-init="false" default-autowire="no"
+	default-dependency-check="none">
+	<bean name="/agent/mailagentlist"
+		class="com.fordays.fdpay.agent.action.MailAgentListAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="agentBiz">
+			<ref bean="agentBiz" />
+		</property>
+	</bean>
+
+	<bean name="/agent/agentlist"
+		class="com.fordays.fdpay.agent.action.AgentListAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="agentBiz">
+			<ref bean="agentBiz" />
+		</property>
+		
+		<property name="transactionBiz">
+			<ref bean="transactionBiz" />
+		</property>
+	</bean>
+	<bean name="/agent/agent"
+		class="com.fordays.fdpay.agent.action.AgentAction" singleton="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="agentBiz">
+			<ref bean="agentBiz" />
+		</property>
+		<property name="accountBiz">
+			<ref bean="accountBiz" />
+		</property>
+		<property name="coterieBiz">
+			<ref bean="coterieBiz" />
+		</property>
+		<property name="agentAddressBiz">
+			<ref bean="agentAddressBiz" />
+		</property>
+		<property name="agentContactBiz">
+			<ref bean="agentContactBiz" />
+		</property>
+
+	</bean>
+	<bean name="/agent/coterielist"
+		class="com.fordays.fdpay.agent.action.CoterieListAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="agentBiz">
+			<ref bean="agentBiz" />
+		</property>
+		<property name="coterieBiz">
+			<ref bean="coterieBiz" />
+		</property>
+		<property name="agentCoterieBiz">
+			<ref bean="agentCorerieBiz" />
+		</property>
+	</bean>
+	<bean name="/agent/coterie"
+		class="com.fordays.fdpay.agent.action.CoterieAction" singleton="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="agentBiz">
+			<ref bean="agentBiz" />
+		</property>
+		<property name="coterieBiz">
+			<ref bean="coterieBiz" />
+		</property>
+		<property name="agentCoterieBiz">
+			<ref bean="agentCorerieBiz" />
+		</property>
+	</bean>
+
+	<bean name="/agent/agentcoterielist"
+		class="com.fordays.fdpay.agent.action.AgentCoterieListAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="agentBiz">
+			<ref bean="agentBiz" />
+		</property>
+		<property name="coterieBiz">
+			<ref bean="coterieBiz" />
+		</property>
+		<property name="agentCoterieBiz">
+			<ref bean="agentCorerieBiz" />
+		</property>
+	</bean>
+
+	<bean name="/agent/agentcoterie"
+		class="com.fordays.fdpay.agent.action.AgentCoterieAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="agentBiz">
+			<ref bean="agentBiz" />
+		</property>
+		<property name="coterieBiz">
+			<ref bean="coterieBiz" />
+		</property>
+		<property name="agentCoterieBiz">
+			<ref bean="agentCorerieBiz" />
+		</property>
+	</bean>
+
+	<bean name="/agent/agentRelationship"
+		class="com.fordays.fdpay.agent.action.AgentRelationshipAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="agentBiz">
+			<ref bean="agentBiz" />
+		</property>
+		<property name="agentRelationshipBiz">
+			<ref bean="agentRelationshipBiz" />
+		</property>
+	</bean>
+
+	<bean name="/agent/agentRelationshiplist"
+		class="com.fordays.fdpay.agent.action.AgentRelationshipListAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="agentBiz">
+			<ref bean="agentBiz" />
+		</property>
+		<property name="agentRelationshipBiz">
+			<ref bean="agentRelationshipBiz" />
+		</property>
+	</bean>
+	
+   <bean name="/agent/agentBalancePointlist"
+		class="com.fordays.fdpay.agent.action.AgentBalancePointListAction"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+			<property name="agentBalancePointBiz">
+			<ref bean="agentBalancePointBiz" />
+		</property>
+	</bean>
+
+	<bean id="agentBiz"
+		class="com.fordays.fdpay.agent.biz.AgentBizImp">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="agentDAO">
+			<ref bean="agentDAO" />
+		</property>
+		<property name="transactionDAO">
+			<ref bean="transactionDAO" />
+		</property>
+		<property name="noUtil">
+			<ref bean="noUtil" />
+		</property>
+	</bean>
+	<bean name="accountBiz"
+		class="com.fordays.fdpay.agent.biz.AccountBizImpl" singleton="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="accountDAO">
+			<ref bean="accountDAO" />
+		</property>
+	</bean>
+	<bean id="accountDAO"
+		class="com.fordays.fdpay.agent.dao.AccountDAOImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean name="agentAddressBiz"
+		class="com.fordays.fdpay.agent.biz.AgentAddressBizImpl"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="agentAddressDAO">
+			<ref bean="agentAddressDAO" />
+		</property>
+	</bean>
+	<bean id="agentAddressDAO"
+		class="com.fordays.fdpay.agent.dao.AgentAddressDAOImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="agentContactBiz"
+		class="com.fordays.fdpay.agent.biz.AgentContactBizImpl"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="agentContactDAO">
+			<ref bean="agentContactDAO" />
+		</property>
+	</bean>
+	<bean id="agentContactDAO"
+		class="com.fordays.fdpay.agent.dao.AgentContactDAOImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+
+	<bean id="agentCorerieBiz"
+		class="com.fordays.fdpay.agent.biz.AgentCoterieBizImp">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="agentCoterieDAO">
+			<ref bean="agentCoterieDAO" />
+		</property>
+	</bean>
+
+	<bean id="coterieBiz"
+		class="com.fordays.fdpay.agent.biz.CoterieBizImp">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="coterieDAO">
+			<ref bean="coterieDAO" />
+		</property>
+	</bean>
+
+	<!-- 
+		<bean id="agentBizProxy"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="target">
+		<ref local="agentDAO" />
+		</property>
+		
+		</bean>
+	-->
+
+	<bean id="agentDAO" class="com.fordays.fdpay.agent.dao.AgentDAOImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="agentCoterieDAO"
+		class="com.fordays.fdpay.agent.dao.AgentCoterieDAOImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="coterieDAO"
+		class="com.fordays.fdpay.agent.dao.CoterieDAOImp" lazy-init="default"
+		autowire="default" dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="agentRelationshipDAO"
+		class="com.fordays.fdpay.agent.dao.AgentRelationshipDAOImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean name="agentRelationshipBiz"
+		class="com.fordays.fdpay.agent.biz.AgentRelationshipBizImpl"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="agentRelationshipDAO">
+			<ref bean="agentRelationshipDAO" />
+		</property>
+	</bean>
+	
+	<bean id="agentBalancePointDAO"
+		class="com.fordays.fdpay.agent.dao.AgentBalancePointDAOImp">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean name="agentBalancePointBiz"
+		class="com.fordays.fdpay.agent.biz.AgentBalancePointBizImp"
+		singleton="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="agentBalancePointDAO">
+			<ref bean="agentBalancePointDAO" />
+		</property>
+	</bean>
+</beans>
